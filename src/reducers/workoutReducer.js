@@ -19,5 +19,9 @@ export const initializeWorkouts = () => {
   };
 };
 
+export const fetchExercises = () => {
+  return async (dispatch) => {};
+};
+
 export const { setupWorkouts } = workoutSlice.actions;
 export default workoutSlice.reducer;

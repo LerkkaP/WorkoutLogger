@@ -1,14 +1,16 @@
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 const WorkoutForm = () => {
   return (
     <div>
-      Date
-      <input />
+      <DatePicker />
       Exercise
-      <input />
+      <input type="text" />
       Sets
-      <input />
+      <input type="number" />
       Reps
-      <input />
+      <input type="number" />
     </div>
   );
 };

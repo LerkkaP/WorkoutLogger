@@ -1,60 +1,58 @@
 {
-  "workouts": {
-    "1": {
+  "workouts": [
+    {
       "date": "1.9.2023",
-      "exercises": {
-        "1": {
+      "exercises": [
+        {
           "name": "Bench Press",
-          "sets": {
-            "set1": { "reps": 5, "kg": 73.75 },
-            "set2": { "reps": 5, "kg": 73.75 },
-            "set3": { "reps": 6, "kg": 73.75 }
-          }
+          "sets": [
+            { "reps": 5, "kg": 73.75 },
+            { "reps": 5, "kg": 73.75 },
+            { "reps": 6, "kg": 73.75 }
+          ]
         },
-        "2": {
+        {
           "name": "Barbell Row",
-          "sets": {
-            "set1": { "reps": 5, "kg": 52.5 },
-            "set2": { "reps": 5, "kg": 52.5 },
-            "set3": { "reps": 6, "kg": 52.5 }
-          }
+          "sets": [
+            { "reps": 5, "kg": 52.5 },
+            { "reps": 5, "kg": 52.5 },
+            { "reps": 6, "kg": 52.5 }
+          ]
         },
-        "3": {
+        {
           "name": "Squat",
-          "sets": {
-            "set1": { "reps": 5, "kg": 58.75 },
-            "set2": { "reps": 5, "kg": 58.75 },
-            "set3": { "reps": 7, "kg": 58.75 }
-          }
+          "sets": [
+            { "reps": 5, "kg": 58.75 },
+            { "reps": 5, "kg": 58.75 },
+            { "reps": 7, "kg": 58.75 }
+          ]
         }
-      }
+      ]
     },
-    "2": {
+    {
       "date": "2.9.2023",
-      "exercises": {
-        "1": {
+      "exercises": [
+        {
           "name": "Overhead Press",
-          "sets": {
-            "set1": { "reps": 5, "kg": 37.5 },
-            "set2": { "reps": 5, "kg": 37.5 },
-            "set3": { "reps": 8, "kg": 37.5 }
-          }
+          "sets": [
+            { "reps": 5, "kg": 37.5 },
+            { "reps": 5, "kg": 37.5 },
+            { "reps": 8, "kg": 37.5 }
+          ]
         },
-        "2": {
+        {
           "name": "Weighted chinups",
-          "sets": {
-            "set1": { "reps": 5, "kg": 16.25 },
-            "set2": { "reps": 5, "kg": 16.25 },
-            "set3": { "reps": 5, "kg": 16.25 }
-          }
+          "sets": [
+            { "reps": 5, "kg": 16.25 },
+            { "reps": 5, "kg": 16.25 },
+            { "reps": 5, "kg": 16.25 }
+          ]
         },
-        "3": {
+        {
           "name": "Deadlift",
-          "sets": {
-            "set1": { "reps": 7, "kg": 62.5 }
-          }
+          "sets": [{ "reps": 7, "kg": 62.5 }]
         }
-      }
+      ]
     }
-  }
+  ]
 }

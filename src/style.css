@@ -1,0 +1,5 @@
+.reps,
+.sets {
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,33 @@
+{
+  "workouts": {
+    "1": {
+      "date": "1.9.2023",
+      "exercises": {
+        "1": {
+          "name": "Bench Press",
+          "sets": {
+            "set1": { "reps": 5, "kg": 74 },
+            "set2": { "reps": 5, "kg": 74 },
+            "set3": { "reps": 6, "kg": 74 }
+          }
+        },
+        "2": {
+          "name": "Barbell Row",
+          "sets": {
+            "set1": { "reps": 5, "kg": 53 },
+            "set2": { "reps": 5, "kg": 53 },
+            "set3": { "reps": 6, "kg": 53 }
+          }
+        },
+        "3": {
+          "name": "Squat",
+          "sets": {
+            "set1": { "reps": 5, "kg": 60 },
+            "set2": { "reps": 5, "kg": 60 },
+            "set3": { "reps": 7, "kg": 60 }
+          }
+        }
+      }
+    }
+  }
+}

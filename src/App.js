@@ -1,5 +1,11 @@
+import workoutService from "./api/services/workouts";
+
 const App = () => {
-  return <h1>hello world</h1>;
+  return (
+    <div>
+      <h1>Hello world</h1>
+    </div>
+  );
 };
 
 export default App;

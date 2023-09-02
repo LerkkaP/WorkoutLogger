@@ -29,5 +29,12 @@ export const insertWorkout = (workout) => {
   };
 };
 
-export const { setupWorkouts, createWorkout } = workoutSlice.actions;
+export const removeWorkout = (id) => {
+  return async (dispatch) => {
+    await workoutService.deleteWorkout(id)
+    dispatch(deleteWorkout)
+  }
+}
+
+export const { setupWorkouts, createWorkout, deleteWorkout } = workoutSlice.actions;
 export default workoutSlice.reducer;

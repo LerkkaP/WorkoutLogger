@@ -9,8 +9,12 @@ const getAll = async () => {
 
 const addWorkout = async (workout) => {
   const response = await axios.post(baseUrl, workout);
-  console.log(response.data);
   return response.data;
 };
 
-export default { getAll, addWorkout };
+const deleteWorkout = async (id) => {
+  const response = await axios.delete(`${baseUrl}/${id}`)
+  return response.data
+}
+
+export default { getAll, addWorkout, deleteWorkout };

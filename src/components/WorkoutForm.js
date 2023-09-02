@@ -1,40 +1,33 @@
-import DatePicker from "react-datepicker";
+/*import DatePicker from "react-datepicker";*/
 import "react-datepicker/dist/react-datepicker.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { updateFormData, resetForm } from "../reducers/formReducer";
-import { createWorkout } from "../reducers/workoutReducer";
+import { insertWorkout } from "../reducers/workoutReducer";
 
 const WorkoutForm = () => {
   const dispatch = useDispatch();
   const formData = useSelector((state) => state.form);
-  console.log(formData);
 
-  const hardcodedDate = "31.12.2023";
-
-  const handleWorkout = () => {
-    const newExercise = {
-      name: formData.exercise,
-      sets: [{ reps: formData.reps, kg: formData.load }],
+  const handleWorkout = async () => {
+    const newWorkout = {
+      date: "2.9.2023",
+      exercises: [
+        {
+          name: formData.exercise,
+          sets: [{ reps: formData.reps, kg: formData.load }],
+        },
+      ],
     };
 
-    const exercises = [newExercise];
-
-    dispatch(createWorkout(hardcodedDate, exercises));
+    dispatch(insertWorkout(newWorkout));
     dispatch(resetForm());
   };
-
-  /*const handleDateChange = (date) => {
-    const formattedDate = date.toISOString();
-
-    dispatch(updateFormData({ date: formattedDate }));
-  };*/
 
   return (
     <div>
       {/*<DatePicker
         selected={formData.date}
-        onChange={handleDateChange}
         dateFormat={"dd.MM.yyyy"}
         isClearable
   />*/}

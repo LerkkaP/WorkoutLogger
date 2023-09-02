@@ -22,5 +22,12 @@ export const initializeWorkouts = () => {
   };
 };
 
+export const insertWorkout = (workout) => {
+  return async (dispatch) => {
+    await workoutService.addWorkout(workout);
+    dispatch(createWorkout(workout));
+  };
+};
+
 export const { setupWorkouts, createWorkout } = workoutSlice.actions;
 export default workoutSlice.reducer;

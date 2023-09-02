@@ -9,6 +9,8 @@ const getAll = async () => {
 
 const addWorkout = async (workout) => {
   const response = await axios.post(baseUrl, workout);
+  console.log(response.data);
+  return response.data;
 };
 
-export default { getAll };
+export default { getAll, addWorkout };

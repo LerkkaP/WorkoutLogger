@@ -9,6 +9,9 @@ export const workoutSlice = createSlice({
     setupWorkouts(state, action) {
       return action.payload;
     },
+    createWorkout(state, action) {
+      state.push(action.payload);
+    },
   },
 });
 
@@ -19,9 +22,5 @@ export const initializeWorkouts = () => {
   };
 };
 
-export const fetchExercises = () => {
-  return async (dispatch) => {};
-};
-
-export const { setupWorkouts } = workoutSlice.actions;
+export const { setupWorkouts, createWorkout } = workoutSlice.actions;
 export default workoutSlice.reducer;

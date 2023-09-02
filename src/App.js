@@ -19,9 +19,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    axios
+    /*axios
       .get("https://api.api-ninjas.com/v1/exercises?name=squat", config)
-      .then((response) => console.log(response.data));
+      .then((response) => console.log(response.data));*/
     dispatch(initializeWorkouts());
   }, []);
 

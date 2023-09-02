@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  date: null,
+  date: "",
   exercise: "",
   reps: "",
   load: "",

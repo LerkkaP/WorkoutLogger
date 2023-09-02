@@ -7,3 +7,21 @@
   display: flex;
   flex-direction: row;
 }
+
+.reps p {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 128, 172, 1) 0%,
+    rgba(0, 128, 172, 1) 70%,
+    rgba(0, 128, 172, 0) 70.3%
+  );
+  height: 1%;
+  width: 1%;
+  margin-right: 70px;
+  text-align: center;
+}
+
+.sets p {
+  padding-right: 5px;
+  text-decoration: underline;
+}

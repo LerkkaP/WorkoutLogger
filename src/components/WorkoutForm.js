@@ -1,4 +1,3 @@
-/*import DatePicker from "react-datepicker";*/
 import "react-datepicker/dist/react-datepicker.css";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -10,8 +9,12 @@ const WorkoutForm = () => {
   const formData = useSelector((state) => state.form);
 
   const handleWorkout = async () => {
+    if (!formData.date.match(dateRegex)) {
+      dispatch(resetForm());
+      return;
+    }
     const newWorkout = {
-      date: "2.9.2023",
+      date: formData.date,
       exercises: [
         {
           name: formData.exercise,
@@ -24,13 +27,17 @@ const WorkoutForm = () => {
     dispatch(resetForm());
   };
 
+  const dateRegex = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/;
+
   return (
     <div>
-      {/*<DatePicker
-        selected={formData.date}
-        dateFormat={"dd.MM.yyyy"}
-        isClearable
-  />*/}
+      Date (dd/MM/yyyy)
+      <input
+        type="text"
+        name="date"
+        value={formData.date}
+        onChange={(e) => dispatch(updateFormData({ date: e.target.value }))}
+      />
       Exercise
       <input
         type="text"

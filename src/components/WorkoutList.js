@@ -12,12 +12,12 @@ const WorkoutList = () => {
           <p>work sets</p>
           <div className="reps">
             {exercise.sets.map((sets, i) => (
-              <p key={i}>{sets.reps}/</p>
+              <p key={i}>{sets.reps}</p>
             ))}
           </div>
           <div className="sets">
             {exercise.sets.map((sets, i) => (
-              <p key={i}>{sets.kg}/</p>
+              <p key={i}>{sets.kg} kg</p>
             ))}
           </div>
         </div>

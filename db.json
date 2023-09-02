@@ -2,7 +2,7 @@
   "workouts": [
     {
       "id": 1,
-      "date": "1.9.2023",
+      "date": "1/9/2023",
       "exercises": [
         {
           "name": "Bench Press",
@@ -59,7 +59,7 @@
     },
     {
       "id": 2,
-      "date": "2.9.2023",
+      "date": "2/9/2023",
       "exercises": [
         {
           "name": "Overhead Press",

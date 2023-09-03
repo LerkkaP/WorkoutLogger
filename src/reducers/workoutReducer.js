@@ -1,6 +1,6 @@
 import workoutService from "../api/services/workouts";
 
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export const workoutSlice = createSlice({
   name: "workouts",

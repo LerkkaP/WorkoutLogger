@@ -1,6 +1,6 @@
 import workoutService from "../api/services/workouts";
 
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 export const workoutSlice = createSlice({
   name: "workouts",
@@ -14,6 +14,21 @@ export const workoutSlice = createSlice({
     },
     deleteWorkout(state, action) {
       return state.filter((workout) => workout.id !== action.payload);
+    },
+    deleteExercise(state, action) {
+      const workoutToUpdate = state.find(
+        (workout) => workout.id === action.payload.id
+      );
+
+      if (workoutToUpdate.exercises.length === 1) {
+        return state.filter((workout) => workout.id !== action.payload.id);
+      } else {
+        workoutToUpdate.exercises = workoutToUpdate.exercises.filter(
+          (exercise) => exercise.name !== action.payload.name
+        );
+      }
+
+      return state;
     },
   },
 });
@@ -39,6 +54,13 @@ export const removeWorkout = (id) => {
   };
 };
 
-export const { setupWorkouts, createWorkout, deleteWorkout } =
+export const removeExercise = (id, name) => {
+  return async (dispatch) => {
+    await workoutService.deleteExercise(id, name);
+    dispatch(deleteExercise({ id: id, name: name }));
+  };
+};
+
+export const { setupWorkouts, createWorkout, deleteWorkout, deleteExercise } =
   workoutSlice.actions;
 export default workoutSlice.reducer;

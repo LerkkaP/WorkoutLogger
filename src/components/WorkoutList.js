@@ -1,8 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import { removeWorkout } from "../reducers/workoutReducer";
-
-import workoutService from "../api/services/workouts";
+import { removeWorkout, removeExercise } from "../reducers/workoutReducer";
 
 const WorkoutList = () => {
   const dispatch = useDispatch();
@@ -16,7 +14,7 @@ const WorkoutList = () => {
   };
 
   const handleDeleteExercise = async (id, exercise) => {
-    await workoutService.deleteExercise(id, exercise);
+    dispatch(removeExercise(id, exercise));
   };
 
   return data.workouts.map((workout, i) => (

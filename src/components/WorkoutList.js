@@ -1,10 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import { removeWorkout, removeExercise } from "../reducers/workoutReducer";
+import { removeWorkout, removeExercise } from "../actions/WorkoutActions";
 
 const WorkoutList = () => {
   const dispatch = useDispatch();
-
   const data = useSelector((state) => state);
 
   const handleDeleteWorkout = async (id) => {

@@ -2,7 +2,8 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { updateFormData, resetForm } from "../reducers/formReducer";
-import { insertWorkout } from "../reducers/workoutReducer";
+
+import { insertWorkout } from "../actions/WorkoutActions";
 
 const WorkoutForm = () => {
   const dispatch = useDispatch();

@@ -17,20 +17,4 @@ const deleteWorkout = async (id) => {
   return response.data;
 };
 
-const deleteExercise = async (id, name) => {
-  const response = await axios.get(`${baseUrl}/${id}`);
-
-  const workouts = response.data;
-
-  workouts.exercises = workouts.exercises.filter(
-    (exercise) => exercise.name !== name
-  );
-
-  if (workouts.exercises.length === 0) {
-    await axios.delete(`${baseUrl}/${id}`);
-  } else {
-    await axios.put(`${baseUrl}/${id}`, workouts);
-  }
-};
-
-export default { getAll, addWorkout, deleteWorkout, deleteExercise };
+export default { getAll, addWorkout, deleteWorkout };

@@ -5,7 +5,8 @@ import WorkoutForm from "./components/WorkoutForm";
 import WorkoutList from "./components/WorkoutList";
 
 import { useDispatch } from "react-redux";
-import { initializeWorkouts } from "./reducers/workoutReducer";
+
+import { initializeWorkouts } from "./actions/WorkoutActions";
 
 import "./style.css";
 

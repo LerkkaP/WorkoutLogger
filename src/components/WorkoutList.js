@@ -1,23 +1,30 @@
 import { useSelector, useDispatch } from "react-redux";
-import workoutService from '../api/services/workouts'
+
+import { removeWorkout } from "../reducers/workoutReducer";
 
 const WorkoutList = () => {
+  const dispatch = useDispatch();
+
   const data = useSelector((state) => state);
 
   const handleDeleteWorkout = async (id) => {
-    if (window.confirm('Are you sure you want to delete this workout?')) {
-      await workoutService.deleteWorkout(id)
+    if (window.confirm("Are you sure you want to delete this workout?")) {
+      dispatch(removeWorkout(id));
     }
-  }
+  };
 
   return data.workouts.map((workout, i) => (
     <div key={i}>
       <p>Date {workout.date}</p>
-      <button onClick={() => handleDeleteWorkout(workout.id)}>Delete workout</button>
+      <button onClick={() => handleDeleteWorkout(workout.id)}>
+        Delete workout
+      </button>
       {workout.exercises.map((exercise, i) => (
         <div key={i}>
           <p>{exercise.name}</p>
-          <button onClick={() => console.log(exercise.name)}>Remove exercise</button>
+          <button onClick={() => console.log(exercise.name)}>
+            Remove exercise
+          </button>
           <p>work sets</p>
           <div className="reps">
             {exercise.sets.map((sets, i) => (

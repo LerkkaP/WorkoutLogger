@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { removeWorkout, removeExercise } from "../actions/WorkoutActions";
 
+import ExerciseForm from "./ExerciseForm";
+
 const WorkoutList = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
@@ -43,6 +45,7 @@ const WorkoutList = () => {
           </div>
         </div>
       ))}
+      <ExerciseForm />
       <hr></hr>
     </div>
   ));

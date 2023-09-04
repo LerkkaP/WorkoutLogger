@@ -18,4 +18,24 @@ const deleteExercise = async (id, name) => {
   }
 };
 
-export default { deleteExercise };
+const addExercise = async () => {
+  await axios.put(`${baseUrl}/${1}`, {
+    name: "Squat",
+    sets: [
+      {
+        reps: 5,
+        kg: 58.75,
+      },
+      {
+        reps: 5,
+        kg: 58.75,
+      },
+      {
+        reps: 7,
+        kg: 58.75,
+      },
+    ],
+  });
+};
+
+export default { deleteExercise, addExercise };

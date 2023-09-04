@@ -2,14 +2,22 @@ import { useState } from "react";
 
 import exerciseService from "../api/services/exercises";
 
-const ExerciseForm = () => {
+const ExerciseForm = (id) => {
   const [exercise, setExercise] = useState("");
   const [reps, setReps] = useState("");
   const [load, setLoad] = useState("");
 
-  const handleSubmit = async () => {
-    await exerciseService.addExercise();
-    console.log(exercise, reps, load);
+  const handleSubmit = async (id) => {
+    const exerciseObject = {
+      name: exercise,
+      sets: [
+        {
+          reps: reps,
+          kg: load,
+        },
+      ],
+    };
+    await exerciseService.addExercise(id, exerciseObject);
     setExercise("");
     setReps("");
     setLoad("");
@@ -38,7 +46,7 @@ const ExerciseForm = () => {
         value={load}
         onChange={(e) => setLoad(e.target.value)}
       />
-      <button onClick={handleSubmit}>Add</button>
+      <button onClick={(e) => handleSubmit(id)}>Add</button>
     </div>
   );
 };

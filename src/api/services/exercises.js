@@ -18,24 +18,12 @@ const deleteExercise = async (id, name) => {
   }
 };
 
-const addExercise = async () => {
-  await axios.put(`${baseUrl}/${1}`, {
-    name: "Squat",
-    sets: [
-      {
-        reps: 5,
-        kg: 58.75,
-      },
-      {
-        reps: 5,
-        kg: 58.75,
-      },
-      {
-        reps: 7,
-        kg: 58.75,
-      },
-    ],
-  });
+const addExercise = async (id, exerciseObject) => {
+  const response = await axios.get(`${baseUrl}/${id.id}`);
+  const existingWorkout = response.data;
+  existingWorkout.exercises.push(exerciseObject);
+
+  await axios.put(`${baseUrl}/${id.id}`, existingWorkout);
 };
 
 export default { deleteExercise, addExercise };

@@ -31,5 +31,17 @@ export const removeExercise = (id, name) => {
   };
 };
 
-export const { setupWorkouts, createWorkout, deleteWorkout, deleteExercise } =
-  workoutSlice.actions;
+export const updateWorkout = (id, exercise) => {
+  return async (dispatch) => {
+    await exerciseService.addExercise(id, exercise);
+    dispatch(updateExercise({ id: id, exercise: exercise }));
+  };
+};
+
+export const {
+  setupWorkouts,
+  createWorkout,
+  deleteWorkout,
+  updateExercise,
+  deleteExercise,
+} = workoutSlice.actions;

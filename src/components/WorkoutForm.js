@@ -5,6 +5,8 @@ import { updateFormData, resetForm } from "../reducers/formReducer";
 
 import { insertWorkout } from "../actions/WorkoutActions";
 
+import { v4 as uuidv4 } from "uuid";
+
 const WorkoutForm = () => {
   const dispatch = useDispatch();
   const formData = useSelector((state) => state.form);
@@ -18,6 +20,7 @@ const WorkoutForm = () => {
       date: formData.date,
       exercises: [
         {
+          exercise_id: uuidv4(),
           name: formData.exercise,
           sets: [{ reps: formData.reps, kg: formData.load }],
         },

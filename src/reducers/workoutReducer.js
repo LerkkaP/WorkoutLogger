@@ -26,14 +26,16 @@ export const workoutSlice = createSlice({
     },
     deleteExercise(state, action) {
       const workoutToUpdate = state.find(
-        (workout) => workout.id === action.payload.id
+        (workout) => workout.id === action.payload.workout_id
       );
 
       if (workoutToUpdate.exercises.length === 1) {
-        return state.filter((workout) => workout.id !== action.payload.id);
+        return state.filter(
+          (workout) => workout.id !== action.payload.workout_id
+        );
       } else {
         workoutToUpdate.exercises = workoutToUpdate.exercises.filter(
-          (exercise) => exercise.name !== action.payload.name
+          (e) => e.exercise_id !== action.payload.exercise_id
         );
       }
 

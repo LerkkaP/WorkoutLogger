@@ -2,19 +2,19 @@ import axios from "axios";
 
 const baseUrl = "http://localhost:3001/workouts";
 
-const deleteExercise = async (id, name) => {
-  const response = await axios.get(`${baseUrl}/${id}`);
+const deleteExercise = async (workout_id, exercise_id) => {
+  const response = await axios.get(`${baseUrl}/${workout_id}`);
 
   const workouts = response.data;
 
   workouts.exercises = workouts.exercises.filter(
-    (exercise) => exercise.name !== name
+    (e) => e.exercise_id !== exercise_id
   );
 
   if (workouts.exercises.length === 0) {
-    await axios.delete(`${baseUrl}/${id}`);
+    await axios.delete(`${baseUrl}/${workout_id}`);
   } else {
-    await axios.put(`${baseUrl}/${id}`, workouts);
+    await axios.put(`${baseUrl}/${workout_id}`, workouts);
   }
 };
 

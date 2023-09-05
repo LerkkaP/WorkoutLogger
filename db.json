@@ -5,6 +5,7 @@
       "date": "1/9/2023",
       "exercises": [
         {
+          "exercise_id": "8cc41f3a-5c19-4cee-aecd-c9776d9f71e3",
           "name": "Barbell Row",
           "sets": [
             {
@@ -22,6 +23,7 @@
           ]
         },
         {
+          "exercise_id": "60ae413a-b712-48b3-af33-2e2096c6e943",
           "name": "Squat",
           "sets": [
             {
@@ -45,6 +47,7 @@
       "date": "2/9/2023",
       "exercises": [
         {
+          "exercise_id": "71ef6537-4dc7-4561-b279-91d2750b2af7",
           "name": "Overhead Press",
           "sets": [
             {
@@ -62,6 +65,7 @@
           ]
         },
         {
+          "exercise_id": "8978c617-d709-4885-974a-8b7ab21adea4",
           "name": "Weighted chinups",
           "sets": [
             {

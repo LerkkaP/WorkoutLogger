@@ -24,10 +24,12 @@ export const removeWorkout = (id) => {
   };
 };
 
-export const removeExercise = (id, name) => {
+export const removeExercise = (workout_id, exercise_id) => {
   return async (dispatch) => {
-    await exerciseService.deleteExercise(id, name);
-    dispatch(deleteExercise({ id: id, name: name }));
+    await exerciseService.deleteExercise(workout_id, exercise_id);
+    dispatch(
+      deleteExercise({ workout_id: workout_id, exercise_id: exercise_id })
+    );
   };
 };
 

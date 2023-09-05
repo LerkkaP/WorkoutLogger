@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 
 import { updateWorkout } from "../actions/WorkoutActions";
 
+import { v4 as uuidv4 } from "uuid";
+
 const ExerciseForm = (id) => {
   const dispatch = useDispatch();
 
@@ -14,6 +16,7 @@ const ExerciseForm = (id) => {
 
   const handleSubmit = async (id) => {
     const exerciseObject = {
+      exercise_id: uuidv4(),
       name: exercise,
       sets: [
         {

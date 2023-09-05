@@ -40,10 +40,25 @@ export const updateWorkout = (id, exercise) => {
   };
 };
 
+export const updateSets = (workout_id, exercise_id, reps, load) => {
+  return async (dispatch) => {
+    await exerciseService.addSet(workout_id, exercise_id, reps, load);
+    dispatch(
+      addSet({
+        workout_id: workout_id,
+        exercise_id: exercise_id,
+        reps: reps,
+        load: load,
+      })
+    );
+  };
+};
+
 export const {
   setupWorkouts,
   createWorkout,
   deleteWorkout,
   updateExercise,
   deleteExercise,
+  addSet,
 } = workoutSlice.actions;

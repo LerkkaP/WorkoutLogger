@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import exerciseService from "../api/services/exercises";
+import { updateSets } from "../actions/WorkoutActions";
 
 const SetForm = ({ workout_id, exercise_id }) => {
   const dispatch = useDispatch();
@@ -10,7 +10,9 @@ const SetForm = ({ workout_id, exercise_id }) => {
   const [load, setLoad] = useState("");
 
   const handleSubmit = async () => {
-    await exerciseService.addSet(workout_id, exercise_id, reps, load);
+    //await exerciseService.addSet(workout_id, exercise_id, reps, load);
+
+    dispatch(updateSets(workout_id, exercise_id, reps, load));
     setReps("");
     setLoad("");
   };

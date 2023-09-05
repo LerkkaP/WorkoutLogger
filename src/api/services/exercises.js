@@ -26,4 +26,19 @@ const addExercise = async (id, exerciseObject) => {
   await axios.put(`${baseUrl}/${id.id}`, existingWorkout);
 };
 
-export default { deleteExercise, addExercise };
+const addSet = async (workout_id, exercise_id, reps, load) => {
+  const response = await axios.get(`${baseUrl}/${workout_id}`);
+  const workouts = response.data;
+
+  const exercise = workouts.exercises.find(
+    (e) => e.exercise_id === exercise_id
+  );
+
+  const newSet = { reps: parseInt(reps), kg: parseInt(load) };
+
+  exercise.sets.push(newSet);
+
+  await axios.put(`${baseUrl}/${workout_id}`, workouts);
+};
+
+export default { deleteExercise, addExercise, addSet };

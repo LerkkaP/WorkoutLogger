@@ -41,7 +41,7 @@ const WorkoutList = () => {
               <p key={i}>{sets.reps}</p>
             ))}
           </div>
-          <SetForm />
+          <SetForm workout_id={workout.id} exercise_id={exercise.exercise_id} />
           <div className="sets">
             {exercise.sets.map((sets, i) => (
               <p key={i}>{sets.kg} kg</p>

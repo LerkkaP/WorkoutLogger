@@ -58,6 +58,20 @@ export const updateSets = (workout_id, exercise_id, reps, load) => {
   };
 };
 
+export const removeSet = (set_id, workout_id, exercise_id) => {
+  return async (dispatch) => {
+    await exerciseService.removeSet(set_id, workout_id, exercise_id);
+    dispatch(deleteSet());
+    /*dispatch(
+      deleteSet({
+        workout_id: workout_id,
+        exercise_id: exercise_id,
+        set_id: set_id,
+      })
+    );*/
+  };
+};
+
 export const {
   setupWorkouts,
   createWorkout,
@@ -65,4 +79,5 @@ export const {
   updateExercise,
   deleteExercise,
   addSet,
+  deleteSet,
 } = workoutSlice.actions;

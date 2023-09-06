@@ -1,6 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import { removeWorkout, removeExercise } from "../actions/WorkoutActions";
+import {
+  removeWorkout,
+  removeExercise,
+  removeSet,
+} from "../actions/WorkoutActions";
 
 import ExerciseForm from "./ExerciseForm";
 import SetForm from "./SetForm";
@@ -17,6 +21,10 @@ const WorkoutList = () => {
 
   const handleDeleteExercise = async (workout_id, exercise_id) => {
     dispatch(removeExercise(workout_id, exercise_id));
+  };
+
+  const handleDeleteSet = async (set_id, workout_id, exercise_id) => {
+    dispatch(removeSet(set_id, workout_id, exercise_id));
   };
 
   return data.workouts.map((workout, i) => (
@@ -39,7 +47,18 @@ const WorkoutList = () => {
           <div className="reps">
             {exercise.sets.map((sets, i) => (
               <p key={i}>
-                {sets.reps} <button>-</button>
+                {sets.reps}{" "}
+                <button
+                  onClick={() =>
+                    handleDeleteSet(
+                      sets.set_id,
+                      workout.id,
+                      exercise.exercise_id
+                    )
+                  }
+                >
+                  -
+                </button>
               </p>
             ))}
           </div>

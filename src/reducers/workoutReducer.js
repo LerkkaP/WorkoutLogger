@@ -48,8 +48,8 @@ export const workoutSlice = createSlice({
             if (exercise.exercise_id === action.payload.exercise_id) {
               const newSet = {
                 set_id: action.payload.set_id,
-                reps: parseInt(action.payload.reps),
-                kg: parseInt(action.payload.load),
+                reps: parseFloat(action.payload.reps),
+                kg: parseFloat(action.payload.load),
               };
 
               const updatedSets = [...exercise.sets, newSet];
@@ -70,6 +70,32 @@ export const workoutSlice = createSlice({
         return workout;
       });
       return updatedState;
+    },
+    deleteSet(action, state) {
+      console.log(state);
+      /*const updatedState = state.map((workout) => {
+        if (workout.id === action.payload.workout_id) {
+          const updatedExercises = workout.exercises.map((exercise) => {
+            if (exercise.exercise_id === action.payload.exercise_id) {
+              const set = exercise.sets.filter(
+                (set) => set.set_id !== action.payload.set_id
+              );
+
+              return {
+                ...exercise,
+                sets: set,
+              };
+            }
+            return exercise;
+          });
+
+          return {
+            ...workout,
+            exercises: updatedExercises,
+          };
+        }
+      });
+      return updatedState;*/
     },
   },
 });

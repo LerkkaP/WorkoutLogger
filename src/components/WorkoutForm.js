@@ -25,8 +25,8 @@ const WorkoutForm = () => {
           sets: [
             {
               set_id: uuidv4(),
-              reps: parseInt(formData.reps),
-              kg: parseInt(formData.load),
+              reps: parseFloat(formData.reps),
+              kg: parseFloat(formData.load),
             },
           ],
         },

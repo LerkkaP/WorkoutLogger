@@ -10,8 +10,6 @@ const SetForm = ({ workout_id, exercise_id }) => {
   const [load, setLoad] = useState("");
 
   const handleSubmit = async () => {
-    //await exerciseService.addSet(workout_id, exercise_id, reps, load);
-
     dispatch(updateSets(workout_id, exercise_id, reps, load));
     setReps("");
     setLoad("");

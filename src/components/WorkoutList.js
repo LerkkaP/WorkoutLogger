@@ -38,7 +38,9 @@ const WorkoutList = () => {
           <p>work sets</p>
           <div className="reps">
             {exercise.sets.map((sets, i) => (
-              <p key={i}>{sets.reps}</p>
+              <p key={i}>
+                {sets.reps} <button>-</button>
+              </p>
             ))}
           </div>
           <SetForm workout_id={workout.id} exercise_id={exercise.exercise_id} />

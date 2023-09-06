@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { current } from "@reduxjs/toolkit";
 export const workoutSlice = createSlice({
   name: "workouts",
   initialState: [],
@@ -48,6 +47,7 @@ export const workoutSlice = createSlice({
           const updatedExercises = workout.exercises.map((exercise) => {
             if (exercise.exercise_id === action.payload.exercise_id) {
               const newSet = {
+                set_id: action.payload.set_id,
                 reps: parseInt(action.payload.reps),
                 kg: parseInt(action.payload.load),
               };

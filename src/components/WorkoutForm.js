@@ -22,7 +22,13 @@ const WorkoutForm = () => {
         {
           exercise_id: uuidv4(),
           name: formData.exercise,
-          sets: [{ reps: formData.reps, kg: formData.load }],
+          sets: [
+            {
+              set_id: uuidv4(),
+              reps: parseInt(formData.reps),
+              kg: parseInt(formData.load),
+            },
+          ],
         },
       ],
     };

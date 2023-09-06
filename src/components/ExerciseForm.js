@@ -18,12 +18,7 @@ const ExerciseForm = (id) => {
     const exerciseObject = {
       exercise_id: uuidv4(),
       name: exercise,
-      sets: [
-        {
-          reps: reps,
-          kg: load,
-        },
-      ],
+      sets: [{ set_id: uuidv4(4), reps: parseInt(reps), kg: parseInt(load) }],
     };
 
     dispatch(updateWorkout(id, exerciseObject));

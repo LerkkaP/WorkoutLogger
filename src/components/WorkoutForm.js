@@ -5,12 +5,22 @@ import { insertWorkout } from "../actions/WorkoutActions";
 
 import { v4 as uuidv4 } from "uuid";
 
+const dateRegex = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/;
+
 const WorkoutForm = () => {
   const dispatch = useDispatch();
   const formData = useSelector((state) => state.form);
 
   const handleWorkout = async () => {
+    const reps = parseFloat(formData.reps);
+    const kg = parseFloat(formData.load);
+
+    if (isNaN(reps) || isNaN(kg)) {
+      alert("Reps and load must be valid numbers");
+      return;
+    }
     if (!formData.date.match(dateRegex)) {
+      alert("Invalid date format. Please use dd/MM/yyyy.");
       dispatch(resetForm());
       return;
     }
@@ -23,8 +33,8 @@ const WorkoutForm = () => {
           sets: [
             {
               set_id: uuidv4(),
-              reps: parseFloat(formData.reps),
-              kg: parseFloat(formData.load),
+              reps: reps,
+              kg: kg,
             },
           ],
         },
@@ -34,9 +44,6 @@ const WorkoutForm = () => {
     dispatch(insertWorkout(newWorkout));
     dispatch(resetForm());
   };
-
-  const dateRegex = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/;
-
   return (
     <div>
       <div>

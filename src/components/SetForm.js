@@ -10,6 +10,10 @@ const SetForm = ({ workout_id, exercise_id }) => {
   const [load, setLoad] = useState("");
 
   const handleSubmit = async () => {
+    if (isNaN(parseFloat(reps)) || isNaN(parseFloat(load))) {
+      alert("Reps and load must be valid numbers");
+      return;
+    }
     dispatch(updateSets(workout_id, exercise_id, reps, load));
     setReps("");
     setLoad("");

@@ -4,27 +4,22 @@ export const workoutSlice = createSlice({
   name: "workouts",
   initialState: [],
   reducers: {
-    setupWorkouts(state, action) {
-      return action.payload;
-    },
-    createWorkout(state, action) {
+    setupWorkouts: (state, action) => action.payload,
+    createWorkout: (state, action) => {
       state.push(action.payload);
     },
-    deleteWorkout(state, action) {
-      return state.filter((workout) => workout.id !== action.payload);
-    },
-    updateExercise(state, action) {
-      return state.map((workout) => {
-        if (workout.id === action.payload.id.id) {
-          return {
-            ...workout,
-            exercises: [...workout.exercises, action.payload.exercise],
-          };
-        }
-        return workout;
-      });
-    },
-    deleteExercise(state, action) {
+    deleteWorkout: (state, action) =>
+      state.filter((workout) => workout.id !== action.payload),
+    updateExercise: (state, action) =>
+      state.map((workout) =>
+        workout.id === action.payload.id.id
+          ? {
+              ...workout,
+              exercises: [...workout.exercises, action.payload.exercise],
+            }
+          : workout
+      ),
+    deleteExercise: (state, action) => {
       const workoutToUpdate = state.find(
         (workout) => workout.id === action.payload.workout_id
       );
@@ -41,59 +36,52 @@ export const workoutSlice = createSlice({
 
       return state;
     },
-    addSet(state, action) {
-      const updatedState = state.map((workout) => {
-        if (workout.id === action.payload.workout_id) {
-          const updatedExercises = workout.exercises.map((exercise) => {
-            if (exercise.exercise_id === action.payload.exercise_id) {
-              const newSet = {
-                set_id: action.payload.set_id,
-                reps: parseFloat(action.payload.reps),
-                kg: parseFloat(action.payload.load),
-              };
+    addSet: (state, action) => {
+      const { workout_id, exercise_id, set_id, reps, load } = action.payload;
 
-              const updatedSets = [...exercise.sets, newSet];
-
-              return {
-                ...exercise,
-                sets: updatedSets,
-              };
+      return state.map((workout) =>
+        workout.id === workout_id
+          ? {
+              ...workout,
+              exercises: workout.exercises.map((exercise) =>
+                exercise.exercise_id === exercise_id
+                  ? {
+                      ...exercise,
+                      sets: [
+                        ...exercise.sets,
+                        {
+                          set_id,
+                          reps: parseFloat(reps),
+                          load: parseFloat(load),
+                        },
+                      ],
+                    }
+                  : exercise
+              ),
             }
-            return exercise;
-          });
-          return {
-            ...workout,
-            exercises: updatedExercises,
-          };
-        }
-        return workout;
-      });
-      return updatedState;
+          : workout
+      );
     },
-    deleteSet(state, action) {
-      const updatedState = state.map((workout) => {
-        if (workout.id === action.payload.workout_id) {
-          const updatedExercises = workout.exercises.map((exercise) => {
-            if (exercise.exercise_id === action.payload.exercise_id) {
-              const set = exercise.sets.filter(
-                (set) => set.set_id !== action.payload.set_id
-              );
+    deleteSet: (state, action) => {
+      const { workout_id, exercise_id, set_id } = action.payload;
 
-              return {
-                ...exercise,
-                sets: set,
-              };
+      return state.map((workout) =>
+        workout.id === workout_id
+          ? {
+              ...workout,
+              exercises: workout.exercises.map((exercise) =>
+                exercise.exercise_id === exercise_id
+                  ? {
+                      ...exercise,
+                      sets: exercise.sets.filter(
+                        (set) => set.set_id !== set_id
+                      ),
+                    }
+                  : exercise
+              ),
             }
-            return exercise;
-          });
-          return {
-            ...workout,
-            exercises: updatedExercises,
-          };
-        }
-        return workout;
-      });
-      return updatedState;
+          : workout
+      );
     },
   },
 });

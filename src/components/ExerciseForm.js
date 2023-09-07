@@ -36,28 +36,36 @@ const ExerciseForm = (id) => {
       </button>
       {show && (
         <div>
-          Exercise
-          <input
-            type="text"
-            name="exercise"
-            value={exercise}
-            onChange={(e) => setExercise(e.target.value)}
-          />
-          Reps
-          <input
-            type="number"
-            name="reps"
-            value={reps}
-            onChange={(e) => setReps(e.target.value)}
-          />
-          Load (kg)
-          <input
-            type="number"
-            name="load"
-            value={load}
-            onChange={(e) => setLoad(e.target.value)}
-          />
-          <button onClick={(e) => handleSubmit(id)}>Add</button>
+          <div>
+            Exercise
+            <input
+              type="text"
+              name="exercise"
+              value={exercise}
+              onChange={(e) => setExercise(e.target.value)}
+            />
+          </div>
+          <div>
+            Reps
+            <input
+              type="number"
+              name="reps"
+              value={reps}
+              onChange={(e) => setReps(e.target.value)}
+            />
+          </div>
+          <div>
+            Load (kg)
+            <input
+              type="number"
+              name="load"
+              value={load}
+              onChange={(e) => setLoad(e.target.value)}
+            />
+          </div>
+          <div>
+            <button onClick={(e) => handleSubmit(id)}>Add</button>
+          </div>
         </div>
       )}
     </div>

@@ -1,5 +1,3 @@
-import "react-datepicker/dist/react-datepicker.css";
-
 import { useDispatch, useSelector } from "react-redux";
 import { updateFormData, resetForm } from "../reducers/formReducer";
 
@@ -41,37 +39,51 @@ const WorkoutForm = () => {
 
   return (
     <div>
-      Date (dd/MM/yyyy)
-      <input
-        type="text"
-        name="date"
-        value={formData.date}
-        onChange={(e) => dispatch(updateFormData({ date: e.target.value }))}
-      />
-      Exercise
-      <input
-        type="text"
-        name="exercise"
-        value={formData.exercise}
-        onChange={(e) => dispatch(updateFormData({ exercise: e.target.value }))}
-      />
-      Reps
-      <input
-        type="number"
-        name="reps"
-        value={formData.reps}
-        onChange={(e) => dispatch(updateFormData({ reps: e.target.value }))}
-      />
-      Load (kg)
-      <input
-        type="number"
-        name="load"
-        value={formData.load}
-        onChange={(e) => dispatch(updateFormData({ load: e.target.value }))}
-      />
-      <button type="submit" onClick={handleWorkout}>
-        Create
-      </button>
+      <div>
+        {" "}
+        Date (dd/MM/yyyy)
+        <input
+          type="text"
+          name="date"
+          value={formData.date}
+          onChange={(e) => dispatch(updateFormData({ date: e.target.value }))}
+        />
+      </div>
+      <div>
+        {" "}
+        Exercise
+        <input
+          type="text"
+          name="exercise"
+          value={formData.exercise}
+          onChange={(e) =>
+            dispatch(updateFormData({ exercise: e.target.value }))
+          }
+        />
+      </div>
+      <div>
+        Reps
+        <input
+          type="number"
+          name="reps"
+          value={formData.reps}
+          onChange={(e) => dispatch(updateFormData({ reps: e.target.value }))}
+        />
+      </div>
+      <div>
+        Load (kg)
+        <input
+          type="number"
+          name="load"
+          value={formData.load}
+          onChange={(e) => dispatch(updateFormData({ load: e.target.value }))}
+        />
+      </div>
+      <div>
+        <button type="submit" onClick={handleWorkout}>
+          Create
+        </button>
+      </div>
     </div>
   );
 };

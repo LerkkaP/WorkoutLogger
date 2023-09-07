@@ -17,21 +17,27 @@ const SetForm = ({ workout_id, exercise_id }) => {
 
   return (
     <div>
-      Reps
-      <input
-        type="number"
-        name="reps"
-        value={reps}
-        onChange={(e) => setReps(e.target.value)}
-      />
-      Load (kg)
-      <input
-        type="number"
-        name="load"
-        value={load}
-        onChange={(e) => setLoad(e.target.value)}
-      />
-      <button onClick={handleSubmit}>Add set</button>
+      <div>
+        Reps
+        <input
+          type="number"
+          name="reps"
+          value={reps}
+          onChange={(e) => setReps(e.target.value)}
+        />
+      </div>
+      <div>
+        Load (kg)
+        <input
+          type="number"
+          name="load"
+          value={load}
+          onChange={(e) => setLoad(e.target.value)}
+        />
+      </div>
+      <div>
+        <button onClick={handleSubmit}>Add set</button>
+      </div>
     </div>
   );
 };

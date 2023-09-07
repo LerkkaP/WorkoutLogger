@@ -61,7 +61,6 @@ export const workoutSlice = createSlice({
             }
             return exercise;
           });
-
           return {
             ...workout,
             exercises: updatedExercises,
@@ -71,9 +70,8 @@ export const workoutSlice = createSlice({
       });
       return updatedState;
     },
-    deleteSet(action, state) {
-      console.log(state);
-      /*const updatedState = state.map((workout) => {
+    deleteSet(state, action) {
+      const updatedState = state.map((workout) => {
         if (workout.id === action.payload.workout_id) {
           const updatedExercises = workout.exercises.map((exercise) => {
             if (exercise.exercise_id === action.payload.exercise_id) {
@@ -88,14 +86,14 @@ export const workoutSlice = createSlice({
             }
             return exercise;
           });
-
           return {
             ...workout,
             exercises: updatedExercises,
           };
         }
+        return workout;
       });
-      return updatedState;*/
+      return updatedState;
     },
   },
 });

@@ -1,82 +1,89 @@
 {
   "workouts": [
     {
-      "date": "28/8/2023",
+      "id": 1,
+      "date": "1/9/2023",
       "exercises": [
         {
-          "exercise_id": "eaf80cc9-4e23-42c3-8f67-afdd8f583e00",
-          "name": "Bench press",
-          "sets": [
-            {
-              "set_id": "f9b53a97-9db3-4e81-806b-c3fda7e81cee",
-              "reps": 5,
-              "kg": 73.75
-            }
-          ]
-        },
-        {
-          "exercise_id": "e1d9f48b-0d1e-46e7-9b5f-ba823ae035ef",
           "name": "Barbell Row",
           "sets": [
             {
-              "set_id": "597792e6-c29a-4cc9-a2d3-e53ca1780b29",
               "reps": 5,
               "kg": 52.5
+            },
+            {
+              "reps": 5,
+              "kg": 52.5
+            },
+            {
+              "reps": 6,
+              "kg": 52.5
+            },
+            {
+              "set_id": "1d109a1b-0657-4b64-a3ad-d4ab20b2cee4",
+              "reps": 5,
+              "kg": 5
             }
           ]
         },
         {
-          "exercise_id": "bfe7a02d-fea2-44c3-ade3-26fe8e2062fc",
           "name": "Squat",
           "sets": [
             {
-              "set_id": "b3719d96-93da-45d0-8ddb-56553d83bccf",
               "reps": 5,
+              "kg": 58.75
+            },
+            {
+              "reps": 5,
+              "kg": 58.75
+            },
+            {
+              "reps": 7,
               "kg": 58.75
             }
           ]
         }
-      ],
-      "id": 1
+      ]
     },
     {
-      "date": "30/8/2023",
+      "id": 2,
+      "date": "2/9/2023",
       "exercises": [
         {
-          "exercise_id": "1c9f6463-1bda-4bf1-93e4-1b8324b51577",
-          "name": "Overhead press",
+          "name": "Overhead Press",
           "sets": [
             {
-              "set_id": "629fd74b-c040-4d58-88d9-f77246e08da5",
               "reps": 5,
-              "kg": 37.75
+              "kg": 37.5
+            },
+            {
+              "reps": 5,
+              "kg": 37.5
+            },
+            {
+              "reps": 8,
+              "kg": 37.5
             }
           ]
         },
         {
-          "exercise_id": "ec068413-5eb6-4d1d-964b-da4090a53197",
           "name": "Weighted chinups",
           "sets": [
             {
-              "set_id": "b9cd917b-11a6-4681-abc0-f703326f9dfd",
+              "reps": 5,
+              "kg": 16.25
+            },
+            {
+              "reps": 5,
+              "kg": 16.25
+            },
+            {
               "reps": 5,
               "kg": 16.25
             }
           ]
-        },
-        {
-          "exercise_id": "54ccc48a-295b-4ad8-a71f-a85831c8f88a",
-          "name": "Deadlift",
-          "sets": [
-            {
-              "set_id": "03621641-6aab-46bf-b61b-1279094d7134",
-              "reps": 7,
-              "kg": 62.5
-            }
-          ]
         }
-      ],
-      "id": 2
+      ]
     }
   ]
 }

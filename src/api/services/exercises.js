@@ -4,19 +4,9 @@ const baseUrl = "http://localhost:3001/workouts";
 
 const deleteExercise = async (workout_id, exercise_id) => {
   try {
-    const response = await axios.get(`${baseUrl}/${workout_id}`);
-
-    const workouts = response.data;
-
-    workouts.exercises = workouts.exercises.filter(
-      (e) => e.exercise_id !== exercise_id
+    await axios.delete(
+      `http://localhost:3001/workouts/${workout_id}/exercises/${exercise_id}`
     );
-
-    if (workouts.exercises.length === 0) {
-      await axios.delete(`${baseUrl}/${workout_id}`);
-    } else {
-      await axios.put(`${baseUrl}/${workout_id}`, workouts);
-    }
   } catch (exception) {
     throw new Error("There was an error in deleting the exercise.");
   }

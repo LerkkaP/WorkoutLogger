@@ -52,7 +52,7 @@ export const workoutSlice = createSlice({
                         {
                           set_id,
                           reps: parseFloat(reps),
-                          load: parseFloat(load),
+                          kg: parseFloat(load),
                         },
                       ],
                     }

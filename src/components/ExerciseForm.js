@@ -15,6 +15,11 @@ const ExerciseForm = (id) => {
   const [show, toggleShow] = useState(false);
 
   const handleSubmit = async (id) => {
+    if (isNaN(parseFloat(reps)) || isNaN(parseFloat(load))) {
+      alert("Reps and load must be valid numbers");
+      return;
+    }
+
     const exerciseObject = {
       exercise_id: uuidv4(),
       name: exercise,
@@ -27,6 +32,7 @@ const ExerciseForm = (id) => {
     setExercise("");
     setReps("");
     setLoad("");
+    toggleShow(!show);
   };
 
   return (

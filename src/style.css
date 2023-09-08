@@ -25,3 +25,16 @@
   padding-right: 5px;
   text-decoration: underline;
 }
+
+.workout {
+  border: 2px solid black;
+  margin-bottom: 10px;
+}
+
+.exercise {
+  border: 2px solid red;
+  margin-bottom: 10px;
+}
+
+/* The idea is to display the workouts as cards
+Exercises will also be individual cards inside the workout card */

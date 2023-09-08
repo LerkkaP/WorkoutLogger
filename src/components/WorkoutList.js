@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from "react-redux";
-
 import {
   removeWorkout,
   removeExercise,
@@ -28,13 +27,13 @@ const WorkoutList = () => {
   };
 
   return data.workouts.map((workout, i) => (
-    <div key={i}>
+    <div key={i} className="workout">
       <p>Date {workout.date}</p>
       <button onClick={() => handleDeleteWorkout(workout.id)}>
         Delete workout
       </button>
       {workout.exercises.map((exercise, i) => (
-        <div key={i}>
+        <div key={i} className="exercise">
           <p>{exercise.name}</p>
           <button
             onClick={() =>
@@ -70,7 +69,7 @@ const WorkoutList = () => {
           </div>
         </div>
       ))}
-      <ExerciseForm id={workout.id} /> <hr></hr>
+      <ExerciseForm id={workout.id} />
     </div>
   ));
 };

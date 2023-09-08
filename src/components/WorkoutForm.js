@@ -9,17 +9,26 @@ const dateRegex = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/;
 
 const WorkoutForm = () => {
   const dispatch = useDispatch();
-  const formData = useSelector((state) => state.form);
+  const formData = useSelector(({ form }) => form);
+
+  const isValidRepsAndLoad = (reps, kg) => {
+    return !isNaN(reps) && !isNaN(kg);
+  };
+
+  const isValidDate = (date) => {
+    return date.match(dateRegex);
+  };
 
   const handleWorkout = async () => {
     const reps = parseFloat(formData.reps);
     const kg = parseFloat(formData.load);
 
-    if (isNaN(reps) || isNaN(kg)) {
+    if (!isValidRepsAndLoad(reps, kg)) {
       alert("Reps and load must be valid numbers");
       return;
     }
-    if (!formData.date.match(dateRegex)) {
+
+    if (!isValidDate(formData.date)) {
       alert("Invalid date format. Please use dd/MM/yyyy.");
       dispatch(resetForm());
       return;

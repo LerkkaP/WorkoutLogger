@@ -54,7 +54,7 @@ const WorkoutForm = () => {
     dispatch(resetForm());
   };
   return (
-    <div>
+    <div className="workoutForm">
       <div>
         {" "}
         Date (dd/MM/yyyy)

@@ -3,6 +3,7 @@
 * {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
 }
 
 .reps-sets-container {
@@ -41,8 +42,23 @@
 
 button {
   border-radius: 20px;
+  border: solid 1.5px black;
   outline: 0;
 }
+
+.reps button {
+  background-color: red;
+}
+
+/* forms/inputs */
+
+.workoutForm input, .setForm input {
+  display: flex;
+  border-radius: 20px;
+  border: solid 1.5px black;
+}
+
+.workoutForm button, .setForm button {
+  margin-top: 1em;
+}
          
-/* The idea is to display the workouts as cards
-Exercises will also be individual cards inside the workout card */

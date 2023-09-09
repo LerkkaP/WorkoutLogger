@@ -20,7 +20,7 @@ const SetForm = ({ workout_id, exercise_id }) => {
   };
 
   return (
-    <div>
+    <div className="setForm">
       <div>
         Reps
         <input

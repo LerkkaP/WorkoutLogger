@@ -14,11 +14,7 @@ const deleteExercise = async (workout_id, exercise_id) => {
 
 const addExercise = async (id, exerciseObject) => {
   try {
-    const response = await axios.get(`${baseUrl}/${id.id}`);
-    const existingWorkout = response.data;
-    existingWorkout.exercises.push(exerciseObject);
-
-    await axios.put(`${baseUrl}/${id.id}`, existingWorkout);
+    await axios.post(`${baseUrl}/${id.id}/exercises`, exerciseObject);
   } catch (exception) {
     throw new Error("There was an error in adding the exercise.");
   }
@@ -26,22 +22,11 @@ const addExercise = async (id, exerciseObject) => {
 
 const addSet = async (workout_id, exercise_id, set_id, reps, load) => {
   try {
-    const response = await axios.get(`${baseUrl}/${workout_id}`);
-    const workouts = response.data;
-
-    const exercise = workouts.exercises.find(
-      (e) => e.exercise_id === exercise_id
-    );
-
-    const newSet = {
-      set_id: set_id,
-      reps: parseFloat(reps),
-      kg: parseFloat(load),
-    };
-
-    exercise.sets.push(newSet);
-
-    await axios.put(`${baseUrl}/${workout_id}`, workouts);
+    await axios.put(`${baseUrl}/${workout_id}/exercises/${exercise_id}/sets`, {
+      set_id,
+      reps,
+      load,
+    });
   } catch (exception) {
     throw new Error("There was an error in adding the set.");
   }
@@ -49,20 +34,10 @@ const addSet = async (workout_id, exercise_id, set_id, reps, load) => {
 
 const removeSet = async (set_id, workout_id, exercise_id) => {
   try {
-    const response = await axios.get(`${baseUrl}/${workout_id}`);
-
-    const workouts = response.data;
-
-    const exercise = workouts.exercises.find(
-      (e) => e.exercise_id === exercise_id
+    await axios.delete(
+      `${baseUrl}/${workout_id}/exercises/${exercise_id}/sets/${set_id}`
     );
-
-    const set = exercise.sets.filter((set) => set.set_id !== set_id);
-
-    exercise.sets = set;
-
-    await axios.put(`${baseUrl}/${workout_id}`, workouts);
-  } catch (error) {
+  } catch (exception) {
     throw new Error("There was an error in removing the set.");
   }
 };

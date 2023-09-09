@@ -36,37 +36,39 @@ const WorkoutList = () => {
         <div key={i} className="exercise">
           <p>{exercise.name}</p>
           <button
+            id="deleteWorkout"
             onClick={() =>
               handleDeleteExercise(workout.id, exercise.exercise_id)
             }
           >
             Remove exercise
           </button>
-          <p>work sets</p>
-          <div className="reps">
-            {exercise.sets.map((sets, i) => (
-              <p key={i}>
-                {sets.reps}{" "}
-                <button
-                  onClick={() =>
-                    handleDeleteSet(
-                      sets.set_id,
-                      workout.id,
-                      exercise.exercise_id
-                    )
-                  }
-                >
-                  -
-                </button>
-              </p>
-            ))}
+          <div className="reps-sets-container">
+            <div className="reps">
+              {exercise.sets.map((sets, i) => (
+                <p key={i}>
+                  {sets.reps}{" "}
+                  <button
+                    onClick={() =>
+                      handleDeleteSet(
+                        sets.set_id,
+                        workout.id,
+                        exercise.exercise_id
+                      )
+                    }
+                  >
+                    -
+                  </button>
+                </p>
+              ))}
+            </div>
+            <div className="sets">
+              {exercise.sets.map((sets, i) => (
+                <p key={i}>{sets.kg} kg</p>
+              ))}
+            </div>
           </div>
           <SetForm workout_id={workout.id} exercise_id={exercise.exercise_id} />
-          <div className="sets">
-            {exercise.sets.map((sets, i) => (
-              <p key={i}>{sets.kg} kg</p>
-            ))}
-          </div>
         </div>
       ))}
       <ExerciseForm id={workout.id} />

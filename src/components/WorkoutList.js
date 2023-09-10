@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   removeWorkout,
@@ -8,18 +7,10 @@ import {
 
 import ExerciseForm from "./ExerciseForm";
 import SetForm from "./SetForm";
-import Overlay from "./Overlay";
-
 
 const WorkoutList = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleOverlay = () => {
-    setIsOpen(!isOpen);
-  };
 
   const handleDeleteWorkout = async (id) => {
     if (window.confirm("Are you sure you want to delete this workout?")) {
@@ -38,6 +29,7 @@ const WorkoutList = () => {
   return data.workouts.map((workout, i) => (
     <div key={i} className="workout">
       <p>Date {workout.date}</p>
+      <button id="dots">&#10247;</button>
       <button onClick={() => handleDeleteWorkout(workout.id)}>
         Delete workout
       </button>
@@ -77,10 +69,7 @@ const WorkoutList = () => {
               ))}
             </div>
           </div>
-          <button onClick={toggleOverlay}>Add set</button>
-          <Overlay isOpen={isOpen} onClose={toggleOverlay}>
-            <SetForm workout_id={workout.id} exercise_id={exercise.exercise_id} />
-          </Overlay>
+          <SetForm workout_id={workout.id} exercise_id={exercise.exercise_id} />
         </div>
       ))}
       <ExerciseForm id={workout.id} />

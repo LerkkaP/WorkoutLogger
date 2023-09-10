@@ -7,7 +7,7 @@ import WorkoutForm from "./components/WorkoutForm";
 import WorkoutList from "./components/WorkoutList";
 import Overlay from "./components/Overlay";
 
-import "./style.css";
+import "./assets/style.css";
 
 const App = () => {
   const dispatch = useDispatch();

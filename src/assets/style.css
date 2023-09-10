@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 * {
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   line-height: 1.5;
 }
 
@@ -10,11 +10,11 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
 
 .reps p {
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
 .sets p {
@@ -29,36 +29,56 @@
   margin: auto;
   margin-top: 10px;
   text-align: center;
+  width: 500px;
 }
 
 .exercise {
   border: 1.5px solid #189ad3;
   border-radius: 20px;
   margin: 10px;
-
 }
 
 /* buttons */
 
-button {
+button:not(#dots) {
   border-radius: 20px;
   border: solid 1.5px black;
   outline: 0;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .reps button {
   background-color: red;
+  color: white;
+}
+
+#dots {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  font-size: 1.5em;
+  position: relative;
+  top: -50px;
+  left: 295px;
 }
 
 /* forms/inputs */
 
-.workoutForm input, .setForm input {
+.workoutForm input,
+.setForm input {
   display: flex;
   border-radius: 20px;
   border: solid 1.5px black;
 }
 
-.workoutForm button, .setForm button {
+.workoutForm button,
+.setForm button {
   margin-top: 1em;
 }
-         

@@ -66,7 +66,7 @@ button:hover {
   font-size: 1.5em;
   position: relative;
   top: -50px;
-  left: 295px;
+  left: 240px;
 }
 
 /* forms/inputs */
@@ -81,4 +81,18 @@ button:hover {
 .workoutForm button,
 .setForm button {
   margin-top: 1em;
+}
+
+/*  Hamburger  */
+
+#menu {
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#menu li {
+  padding: 10px;
 }

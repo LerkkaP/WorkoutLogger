@@ -12,8 +12,6 @@ const ExerciseForm = (id) => {
   const [reps, setReps] = useState("");
   const [load, setLoad] = useState("");
 
-  const [show, toggleShow] = useState(false);
-
   const handleSubmit = async (id) => {
     if (isNaN(parseFloat(reps)) || isNaN(parseFloat(load))) {
       alert("Reps and load must be valid numbers");
@@ -32,48 +30,42 @@ const ExerciseForm = (id) => {
     setExercise("");
     setReps("");
     setLoad("");
-    toggleShow(!show);
   };
 
   return (
     <div>
-      <button onClick={() => toggleShow(!show)}>
-        {show ? "Hide" : "Edit"}
-      </button>
-      {show && (
+      <div>
         <div>
-          <div>
-            Exercise
-            <input
-              type="text"
-              name="exercise"
-              value={exercise}
-              onChange={(e) => setExercise(e.target.value)}
-            />
-          </div>
-          <div>
-            Reps
-            <input
-              type="number"
-              name="reps"
-              value={reps}
-              onChange={(e) => setReps(e.target.value)}
-            />
-          </div>
-          <div>
-            Load (kg)
-            <input
-              type="number"
-              name="load"
-              value={load}
-              onChange={(e) => setLoad(e.target.value)}
-            />
-          </div>
-          <div>
-            <button onClick={(e) => handleSubmit(id)}>Add</button>
-          </div>
+          Exercise
+          <input
+            type="text"
+            name="exercise"
+            value={exercise}
+            onChange={(e) => setExercise(e.target.value)}
+          />
         </div>
-      )}
+        <div>
+          Reps
+          <input
+            type="number"
+            name="reps"
+            value={reps}
+            onChange={(e) => setReps(e.target.value)}
+          />
+        </div>
+        <div>
+          Load (kg)
+          <input
+            type="number"
+            name="load"
+            value={load}
+            onChange={(e) => setLoad(e.target.value)}
+          />
+        </div>
+        <div>
+          <button onClick={(e) => handleSubmit(id)}>Add</button>
+        </div>
+      </div>
     </div>
   );
 };

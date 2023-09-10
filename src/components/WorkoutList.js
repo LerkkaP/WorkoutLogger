@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 import {
   removeWorkout,
@@ -7,11 +9,25 @@ import {
 
 import ExerciseForm from "./ExerciseForm";
 import SetForm from "./SetForm";
+import Overlay from "./Overlay";
 
 const WorkoutList = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
 
+  const [hamburger, setHamburger] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedWorkoutId, setSelectedWorkoutId] = useState(null);
+
+  const toggleOverlay = (workoutId) => {
+    setIsOpen(!isOpen);
+    setSelectedWorkoutId(workoutId);
+    setIsOpen(!isOpen);
+  };
+
+  const handleToggleMenu = () => {
+    setHamburger(!hamburger);
+  };
   const handleDeleteWorkout = async (id) => {
     if (window.confirm("Are you sure you want to delete this workout?")) {
       dispatch(removeWorkout(id));
@@ -29,10 +45,23 @@ const WorkoutList = () => {
   return data.workouts.map((workout, i) => (
     <div key={i} className="workout">
       <p>Date {workout.date}</p>
-      <button id="dots">&#10247;</button>
-      <button onClick={() => handleDeleteWorkout(workout.id)}>
-        Delete workout
+      <button id="dots" onClick={handleToggleMenu}>
+        &#10247;
       </button>
+      {hamburger && (
+        <ul id="menu">
+          <li>
+            <button onClick={() => handleDeleteWorkout(workout.id)}>
+              Delete workout
+            </button>{" "}
+          </li>
+          <li>
+            <button onClick={() => handleDeleteWorkout(workout.id)}>
+              Delete workout
+            </button>{" "}
+          </li>
+        </ul>
+      )}
       {workout.exercises.map((exercise, i) => (
         <div key={i} className="exercise">
           <p>{exercise.name}</p>
@@ -72,7 +101,10 @@ const WorkoutList = () => {
           <SetForm workout_id={workout.id} exercise_id={exercise.exercise_id} />
         </div>
       ))}
-      <ExerciseForm id={workout.id} />
+      <button onClick={() => toggleOverlay(workout.id)}>Add exercise</button>
+      <Overlay isOpen={isOpen} onClose={toggleOverlay}>
+        {selectedWorkoutId && <ExerciseForm id={selectedWorkoutId} />}
+      </Overlay>
     </div>
   ));
 };

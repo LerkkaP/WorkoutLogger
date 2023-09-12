@@ -20,10 +20,9 @@ const addExercise = async (id, exerciseObject) => {
   }
 };
 
-const addSet = async (workout_id, exercise_id, set_id, reps, load) => {
+const addSet = async (workout_id, exercise_id, reps, load) => {
   try {
     await axios.put(`${baseUrl}/${workout_id}/exercises/${exercise_id}/sets`, {
-      set_id,
       reps,
       load,
     });

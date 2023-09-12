@@ -30,7 +30,7 @@ export const workoutSlice = createSlice({
         );
       } else {
         workoutToUpdate.exercises = workoutToUpdate.exercises.filter(
-          (e) => e.exercise_id !== action.payload.exercise_id
+          (e) => e.id !== action.payload.exercise_id
         );
       }
 
@@ -44,7 +44,7 @@ export const workoutSlice = createSlice({
           ? {
               ...workout,
               exercises: workout.exercises.map((exercise) =>
-                exercise.exercise_id === exercise_id
+                exercise.id === exercise_id
                   ? {
                       ...exercise,
                       sets: [

@@ -67,9 +67,7 @@ const WorkoutList = () => {
           <p>{exercise.name}</p>
           <button
             id="deleteWorkout"
-            onClick={() =>
-              handleDeleteExercise(workout.id, exercise.exercise_id)
-            }
+            onClick={() => handleDeleteExercise(workout.id, exercise.id)}
           >
             Remove exercise
           </button>
@@ -98,7 +96,7 @@ const WorkoutList = () => {
               ))}
             </div>
           </div>
-          <SetForm workout_id={workout.id} exercise_id={exercise.exercise_id} />
+          <SetForm workout_id={workout.id} exercise_id={exercise.id} />
         </div>
       ))}
       <button onClick={() => toggleOverlay(workout.id)}>Add exercise</button>

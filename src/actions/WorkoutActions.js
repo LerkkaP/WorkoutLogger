@@ -27,8 +27,6 @@ export const removeWorkout = (id) => {
 export const removeExercise = (workout_id, exercise_id) => {
   return async (dispatch) => {
     await exerciseService.deleteExercise(workout_id, exercise_id);
-    console.log(exercise_id);
-
     dispatch(
       deleteExercise({ workout_id: workout_id, exercise_id: exercise_id })
     );

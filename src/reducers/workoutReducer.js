@@ -29,12 +29,17 @@ export const workoutSlice = createSlice({
           (workout) => workout.id !== action.payload.workout_id
         );
       } else {
-        workoutToUpdate.exercises = workoutToUpdate.exercises.filter(
-          (e) => e.id !== action.payload.exercise_id
+        const updatedWorkout = {
+          ...workoutToUpdate,
+          exercises: workoutToUpdate.exercises.filter(
+            (e) => e.id !== action.payload.exercise_id
+          ),
+        };
+
+        return state.map((workout) =>
+          workout.id === updatedWorkout.id ? updatedWorkout : workout
         );
       }
-
-      return state;
     },
     addSet: (state, action) => {
       const { workout_id, exercise_id, set_id, reps, load } = action.payload;

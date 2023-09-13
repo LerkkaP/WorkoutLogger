@@ -19,13 +19,9 @@ const ExerciseForm = (id) => {
     }
 
     const exerciseObject = {
-      exercise_id: uuidv4(),
       name: exercise,
-      sets: [
-        { set_id: uuidv4(4), reps: parseFloat(reps), kg: parseFloat(load) },
-      ],
+      sets: [{ reps: parseFloat(reps), kg: parseFloat(load) }],
     };
-
     dispatch(updateWorkout(id, exerciseObject));
     setExercise("");
     setReps("");

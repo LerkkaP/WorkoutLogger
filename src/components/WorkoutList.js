@@ -35,6 +35,7 @@ const WorkoutList = () => {
   };
 
   const handleDeleteExercise = async (workout_id, exercise_id) => {
+    console.log(exercise_id);
     dispatch(removeExercise(workout_id, exercise_id));
   };
 

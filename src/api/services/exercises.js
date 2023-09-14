@@ -14,7 +14,11 @@ const deleteExercise = async (workout_id, exercise_id) => {
 
 const addExercise = async (id, exerciseObject) => {
   try {
-    await axios.post(`${baseUrl}/${id.id}/exercises`, exerciseObject);
+    const response = await axios.post(
+      `${baseUrl}/${id.id}/exercises`,
+      exerciseObject
+    );
+    return response.data;
   } catch (exception) {
     throw new Error("There was an error in adding the exercise.");
   }

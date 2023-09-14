@@ -28,14 +28,13 @@ const WorkoutList = () => {
   const handleToggleMenu = () => {
     setHamburger(!hamburger);
   };
-  const handleDeleteWorkout = async (id) => {
+  const handleDeleteWorkout = (id) => {
     if (window.confirm("Are you sure you want to delete this workout?")) {
       dispatch(removeWorkout(id));
     }
   };
 
   const handleDeleteExercise = async (workout_id, exercise_id) => {
-    console.log(exercise_id);
     dispatch(removeExercise(workout_id, exercise_id));
   };
 

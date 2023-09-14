@@ -37,11 +37,11 @@ const WorkoutForm = () => {
       date: formData.date,
       exercises: [
         {
-          exercise_id: uuidv4(),
+          //exercise_id: uuidv4(),
           name: formData.exercise,
           sets: [
             {
-              set_id: uuidv4(),
+              //set_id: uuidv4(),
               reps: reps,
               kg: kg,
             },

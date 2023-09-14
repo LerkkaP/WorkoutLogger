@@ -10,12 +10,22 @@ export const workoutSlice = createSlice({
     },
     deleteWorkout: (state, action) =>
       state.filter((workout) => workout.id !== action.payload),
+    /*updateExercise: (state, action) => {
+      console.log(action.payload);
+      console.log(action.payload.id);
+      console.log(
+        action.payload.exercises[action.payload.exercises.length - 1]
+      );
+    },*/
     updateExercise: (state, action) =>
       state.map((workout) =>
-        workout.id === action.payload.id.id
+        workout.id === action.payload.id
           ? {
               ...workout,
-              exercises: [...workout.exercises, action.payload.exercise],
+              exercises: [
+                ...workout.exercises,
+                action.payload.exercises[action.payload.exercises.length - 1],
+              ],
             }
           : workout
       ),

@@ -35,14 +35,20 @@ export const removeExercise = (workout_id, exercise_id) => {
 
 export const updateWorkout = (id, exercise) => {
   return async (dispatch) => {
-    await exerciseService.addExercise(id, exercise);
-    dispatch(updateExercise({ id: id, exercise: exercise }));
+    const response = await exerciseService.addExercise(id, exercise);
+    dispatch(updateExercise(response));
   };
 };
 
+/*export const updateWorkout = (id, exercise) => {
+  return async (dispatch) => {
+    await exerciseService.addExercise(id, exercise);
+    dispatch(updateExercise({ id: id, exercise: exercise }));
+  };
+};*/
+
 export const updateSets = (workout_id, exercise_id, reps, load) => {
   return async (dispatch) => {
-    console.log(exercise_id);
     await exerciseService.addSet(workout_id, exercise_id, reps, load);
     dispatch(
       addSet({

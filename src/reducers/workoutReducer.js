@@ -10,13 +10,6 @@ export const workoutSlice = createSlice({
     },
     deleteWorkout: (state, action) =>
       state.filter((workout) => workout.id !== action.payload),
-    /*updateExercise: (state, action) => {
-      console.log(action.payload);
-      console.log(action.payload.id);
-      console.log(
-        action.payload.exercises[action.payload.exercises.length - 1]
-      );
-    },*/
     updateExercise: (state, action) =>
       state.map((workout) =>
         workout.id === action.payload.id
@@ -53,7 +46,6 @@ export const workoutSlice = createSlice({
     },
     addSet: (state, action) => {
       const { workout_id, exercise_id, set_id, reps, load } = action.payload;
-
       return state.map((workout) =>
         workout.id === workout_id
           ? {
@@ -79,18 +71,17 @@ export const workoutSlice = createSlice({
     },
     deleteSet: (state, action) => {
       const { workout_id, exercise_id, set_id } = action.payload;
+      console.log(action.payload);
 
       return state.map((workout) =>
         workout.id === workout_id
           ? {
               ...workout,
               exercises: workout.exercises.map((exercise) =>
-                exercise.exercise_id === exercise_id
+                exercise.id === exercise_id
                   ? {
                       ...exercise,
-                      sets: exercise.sets.filter(
-                        (set) => set.set_id !== set_id
-                      ),
+                      sets: exercise.sets.filter((set) => set.id !== set_id),
                     }
                   : exercise
               ),

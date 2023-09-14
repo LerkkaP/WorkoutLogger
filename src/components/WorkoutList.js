@@ -78,11 +78,7 @@ const WorkoutList = () => {
                   {sets.reps}{" "}
                   <button
                     onClick={() =>
-                      handleDeleteSet(
-                        sets.set_id,
-                        workout.id,
-                        exercise.exercise_id
-                      )
+                      handleDeleteSet(sets.id, workout.id, exercise.id)
                     }
                   >
                     -

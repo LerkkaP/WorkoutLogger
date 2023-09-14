@@ -47,7 +47,7 @@ export const updateWorkout = (id, exercise) => {
   };
 };*/
 
-export const updateSets = (workout_id, exercise_id, reps, load) => {
+/*export const updateSets = (workout_id, exercise_id, reps, load) => {
   return async (dispatch) => {
     await exerciseService.addSet(workout_id, exercise_id, reps, load);
     dispatch(
@@ -58,6 +58,19 @@ export const updateSets = (workout_id, exercise_id, reps, load) => {
         load: load,
       })
     );
+  };
+};*/
+
+export const updateSets = (workout_id, exercise_id, reps, load) => {
+  return async (dispatch) => {
+    const response = await exerciseService.addSet(
+      workout_id,
+      exercise_id,
+      reps,
+      load
+    );
+    console.log(response);
+    dispatch(addSet(response));
   };
 };
 

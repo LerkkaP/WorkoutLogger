@@ -26,10 +26,14 @@ const addExercise = async (id, exerciseObject) => {
 
 const addSet = async (workout_id, exercise_id, reps, load) => {
   try {
-    await axios.put(`${baseUrl}/${workout_id}/exercises/${exercise_id}/sets`, {
-      reps,
-      load,
-    });
+    const response = await axios.put(
+      `${baseUrl}/${workout_id}/exercises/${exercise_id}/sets`,
+      {
+        reps,
+        load,
+      }
+    );
+    return response.data;
   } catch (exception) {
     throw new Error("There was an error in adding the set.");
   }

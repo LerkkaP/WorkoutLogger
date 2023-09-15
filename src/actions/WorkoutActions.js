@@ -40,27 +40,6 @@ export const updateWorkout = (id, exercise) => {
   };
 };
 
-/*export const updateWorkout = (id, exercise) => {
-  return async (dispatch) => {
-    await exerciseService.addExercise(id, exercise);
-    dispatch(updateExercise({ id: id, exercise: exercise }));
-  };
-};*/
-
-/*export const updateSets = (workout_id, exercise_id, reps, load) => {
-  return async (dispatch) => {
-    await exerciseService.addSet(workout_id, exercise_id, reps, load);
-    dispatch(
-      addSet({
-        workout_id: workout_id,
-        exercise_id: exercise_id,
-        reps: reps,
-        load: load,
-      })
-    );
-  };
-};*/
-
 export const updateSets = (workout_id, exercise_id, reps, load) => {
   return async (dispatch) => {
     const response = await exerciseService.addSet(
@@ -69,8 +48,16 @@ export const updateSets = (workout_id, exercise_id, reps, load) => {
       reps,
       load
     );
-    console.log(response);
-    dispatch(addSet(response));
+    const lastSetId = response.exercises[0].sets.slice(-1)[0].id;
+    dispatch(
+      addSet({
+        workout_id: workout_id,
+        exercise_id: exercise_id,
+        reps: reps,
+        load: load,
+        id: lastSetId,
+      })
+    );
   };
 };
 

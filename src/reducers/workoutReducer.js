@@ -45,7 +45,7 @@ export const workoutSlice = createSlice({
       }
     },
     addSet: (state, action) => {
-      const { workout_id, exercise_id, set_id, reps, load } = action.payload;
+      const { workout_id, exercise_id, reps, load, id } = action.payload;
       return state.map((workout) =>
         workout.id === workout_id
           ? {
@@ -57,7 +57,7 @@ export const workoutSlice = createSlice({
                       sets: [
                         ...exercise.sets,
                         {
-                          set_id,
+                          id,
                           reps: parseFloat(reps),
                           kg: parseFloat(load),
                         },
@@ -71,7 +71,6 @@ export const workoutSlice = createSlice({
     },
     deleteSet: (state, action) => {
       const { workout_id, exercise_id, set_id } = action.payload;
-      console.log(action.payload);
 
       return state.map((workout) =>
         workout.id === workout_id

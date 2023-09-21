@@ -3,8 +3,6 @@ import { updateFormData, resetForm } from "../reducers/formReducer";
 
 import { insertWorkout } from "../actions/WorkoutActions";
 
-import { v4 as uuidv4 } from "uuid";
-
 const dateRegex = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/;
 
 const WorkoutForm = () => {
@@ -37,11 +35,9 @@ const WorkoutForm = () => {
       date: formData.date,
       exercises: [
         {
-          //exercise_id: uuidv4(),
           name: formData.exercise,
           sets: [
             {
-              //set_id: uuidv4(),
               reps: reps,
               kg: kg,
             },

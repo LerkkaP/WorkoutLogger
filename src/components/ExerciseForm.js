@@ -3,8 +3,6 @@ import { useDispatch } from "react-redux";
 
 import { updateWorkout } from "../actions/WorkoutActions";
 
-import { v4 as uuidv4 } from "uuid";
-
 const ExerciseForm = (id) => {
   const dispatch = useDispatch();
 
@@ -30,7 +28,7 @@ const ExerciseForm = (id) => {
 
   return (
     <div>
-      <div>
+      <div className="exerciseForm">
         <div>
           Exercise
           <input

@@ -40,7 +40,7 @@
 
 /* buttons */
 
-button:not(#dots) {
+button {
   border-radius: 20px;
   border: solid 1.5px black;
   outline: 0;
@@ -69,17 +69,25 @@ button:hover {
   left: 240px;
 }
 
+.add {
+  background-color: green;
+  color: white;
+  border: none;
+}
+
 /* forms/inputs */
 
 .workoutForm input,
-.setForm input {
+.setForm input,
+.exerciseForm input {
   display: flex;
   border-radius: 20px;
   border: solid 1.5px black;
 }
 
 .workoutForm button,
-.setForm button {
+.setForm button,
+.exerciseForm button {
   margin-top: 1em;
 }
 
@@ -89,8 +97,11 @@ button:hover {
   list-style: none;
   padding: 0;
   position: absolute;
+  top: 11%;
+  right: 31.5%;
   background-color: white;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
 #menu li {

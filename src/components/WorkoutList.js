@@ -1,6 +1,6 @@
 import { useState } from "react";
-
 import { useSelector, useDispatch } from "react-redux";
+
 import {
   removeWorkout,
   removeExercise,
@@ -55,11 +55,6 @@ const WorkoutList = () => {
               Delete workout
             </button>{" "}
           </li>
-          <li>
-            <button onClick={() => handleDeleteWorkout(workout.id)}>
-              Delete workout
-            </button>{" "}
-          </li>
         </ul>
       )}
       {workout.exercises.map((exercise, i) => (
@@ -95,7 +90,7 @@ const WorkoutList = () => {
           <SetForm workout_id={workout.id} exercise_id={exercise.id} />
         </div>
       ))}
-      <button onClick={() => toggleOverlay(workout.id)}>Add exercise</button>
+      <button className="add" onClick={() => toggleOverlay(workout.id)}>+</button>
       <Overlay isOpen={isOpen} onClose={toggleOverlay}>
         {selectedWorkoutId && <ExerciseForm id={selectedWorkoutId} />}
       </Overlay>

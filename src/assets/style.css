@@ -4,6 +4,9 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   line-height: 1.5;
+  background-color: #121212;
+  color: white;
+  font-weight: 100;
 }
 
 .reps-sets-container {
@@ -22,7 +25,7 @@
 }
 
 .workout {
-  border: 1.5px solid black;
+  border: 1.3px solid white;
   border-radius: 20px;
   margin-bottom: 10px;
   width: 50%;
@@ -30,12 +33,6 @@
   margin-top: 10px;
   text-align: center;
   width: 500px;
-}
-
-.exercise {
-  border: 1.5px solid #189ad3;
-  border-radius: 20px;
-  margin: 10px;
 }
 
 /* buttons */
@@ -51,8 +48,8 @@ button:hover {
 }
 
 .reps button {
-  background-color: red;
   color: white;
+  border-color: white;
 }
 
 #dots {
@@ -107,3 +104,8 @@ button:hover {
 #menu li {
   padding: 10px;
 }
+
+/* Poista set form ja laita tilalle + josta avautuu setform
+
+   Lisäksi laitaa liikkeen lisäys kebab menuun
+*/

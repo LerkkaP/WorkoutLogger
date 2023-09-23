@@ -87,6 +87,7 @@ const WorkoutList = () => {
               ))}
             </div>
           </div>
+          <hr></hr>
           <SetForm workout_id={workout.id} exercise_id={exercise.id} />
         </div>
       ))}

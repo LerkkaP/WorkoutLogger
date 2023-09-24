@@ -16,13 +16,21 @@ const WorkoutList = () => {
   const data = useSelector((state) => state);
 
   const [hamburger, setHamburger] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedWorkoutId, setSelectedWorkoutId] = useState(null);
+  const [exerciseOverlays, setExerciseOverlays] = useState({}); 
+  const [setOverlays, setSetOverlays] = useState({}); 
 
-  const toggleOverlay = (workoutId) => {
-    setIsOpen(!isOpen);
-    setSelectedWorkoutId(workoutId);
-    setIsOpen(!isOpen);
+  const toggleExerciseOverlay = (exerciseId) => {
+    setExerciseOverlays((prevState) => ({
+      ...prevState,
+      [exerciseId]: !prevState[exerciseId],
+    }));
+  };
+
+  const toggleSetOverlay = (exerciseId) => {
+    setSetOverlays((prevState) => ({
+      ...prevState,
+      [exerciseId]: !prevState[exerciseId],
+    }));
   };
 
   const handleToggleMenu = () => {
@@ -54,18 +62,31 @@ const WorkoutList = () => {
             <button onClick={() => handleDeleteWorkout(workout.id)}>
               Delete workout
             </button>{" "}
+            <button
+              className="add"
+              onClick={() => toggleExerciseOverlay(workout.id)}
+            >
+              add exercise
+            </button>
+            <Overlay
+              isOpen={exerciseOverlays[workout.id]}
+              onClose={() => toggleExerciseOverlay(workout.id)}
+            >
+              {exerciseOverlays[workout.id] && (
+                <ExerciseForm id={workout.id} />
+              )}
+            </Overlay>
           </li>
         </ul>
       )}
       {workout.exercises.map((exercise, i) => (
         <div key={i} className="exercise">
-          <p>{exercise.name}</p>
-          <button
+          <p>{exercise.name} <button
             id="deleteWorkout"
             onClick={() => handleDeleteExercise(workout.id, exercise.id)}
           >
-            Remove exercise
-          </button>
+            -
+          </button></p>
           <div className="reps-sets-container">
             <div className="reps">
               {exercise.sets.map((sets, i) => (
@@ -87,16 +108,25 @@ const WorkoutList = () => {
               ))}
             </div>
           </div>
-          <hr></hr>
-          <SetForm workout_id={workout.id} exercise_id={exercise.id} />
+          <button
+            className="add"
+            onClick={() => toggleSetOverlay(exercise.id)}
+          >
+            +
+          </button>
+          <Overlay
+            isOpen={setOverlays[exercise.id]}
+            onClose={() => toggleSetOverlay(exercise.id)}
+          >
+            {setOverlays[exercise.id] && (
+              <SetForm workout_id={workout.id} exercise_id={exercise.id} />
+            )}
+          </Overlay>
         </div>
       ))}
-      <button className="add" onClick={() => toggleOverlay(workout.id)}>+</button>
-      <Overlay isOpen={isOpen} onClose={toggleOverlay}>
-        {selectedWorkoutId && <ExerciseForm id={selectedWorkoutId} />}
-      </Overlay>
     </div>
   ));
 };
+
 
 export default WorkoutList;

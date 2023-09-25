@@ -16,8 +16,8 @@ const WorkoutList = () => {
   const data = useSelector((state) => state);
 
   const [hamburger, setHamburger] = useState(false);
-  const [exerciseOverlays, setExerciseOverlays] = useState({}); 
-  const [setOverlays, setSetOverlays] = useState({}); 
+  const [exerciseOverlays, setExerciseOverlays] = useState({});
+  const [setOverlays, setSetOverlays] = useState({});
 
   const toggleExerciseOverlay = (exerciseId) => {
     setExerciseOverlays((prevState) => ({
@@ -52,7 +52,7 @@ const WorkoutList = () => {
 
   return data.workouts.map((workout, i) => (
     <div key={i} className="workout">
-      <p>Date {workout.date}</p>
+      <p>{workout.date}</p>
       <button id="dots" onClick={handleToggleMenu}>
         &#10247;
       </button>
@@ -72,21 +72,22 @@ const WorkoutList = () => {
               isOpen={exerciseOverlays[workout.id]}
               onClose={() => toggleExerciseOverlay(workout.id)}
             >
-              {exerciseOverlays[workout.id] && (
-                <ExerciseForm id={workout.id} />
-              )}
+              {exerciseOverlays[workout.id] && <ExerciseForm id={workout.id} />}
             </Overlay>
           </li>
         </ul>
       )}
       {workout.exercises.map((exercise, i) => (
         <div key={i} className="exercise">
-          <p>{exercise.name} <button
-            id="deleteWorkout"
-            onClick={() => handleDeleteExercise(workout.id, exercise.id)}
-          >
-            -
-          </button></p>
+          <p>
+            {exercise.name}{" "}
+            <button
+              id="deleteWorkout"
+              onClick={() => handleDeleteExercise(workout.id, exercise.id)}
+            >
+              -
+            </button>
+          </p>
           <div className="reps-sets-container">
             <div className="reps">
               {exercise.sets.map((sets, i) => (
@@ -108,10 +109,7 @@ const WorkoutList = () => {
               ))}
             </div>
           </div>
-          <button
-            className="add"
-            onClick={() => toggleSetOverlay(exercise.id)}
-          >
+          <button className="add" onClick={() => toggleSetOverlay(exercise.id)}>
             +
           </button>
           <Overlay
@@ -127,6 +125,5 @@ const WorkoutList = () => {
     </div>
   ));
 };
-
 
 export default WorkoutList;

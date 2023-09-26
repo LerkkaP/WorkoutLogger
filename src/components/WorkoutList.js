@@ -16,6 +16,8 @@ const WorkoutList = () => {
   const data = useSelector((state) => state);
 
   const [hamburger, setHamburger] = useState(false);
+  const [activeWorkout, setActiveWorkout] = useState(null);
+
   const [exerciseOverlays, setExerciseOverlays] = useState({});
   const [setOverlays, setSetOverlays] = useState({});
 
@@ -33,7 +35,8 @@ const WorkoutList = () => {
     }));
   };
 
-  const handleToggleMenu = () => {
+  const handleToggleMenu = (workoutId) => {
+    setActiveWorkout(workoutId);
     setHamburger(!hamburger);
   };
   const handleDeleteWorkout = (id) => {
@@ -53,10 +56,10 @@ const WorkoutList = () => {
   return data.workouts.map((workout, i) => (
     <div key={i} className="workout">
       <p>{workout.date}</p>
-      <button id="dots" onClick={handleToggleMenu}>
+      <button id="dots" onClick={() => handleToggleMenu(workout.id)}>
         &#10247;
       </button>
-      {hamburger && (
+      {hamburger && activeWorkout === workout.id && (
         <ul id="menu">
           <li>
             <button onClick={() => handleDeleteWorkout(workout.id)}>

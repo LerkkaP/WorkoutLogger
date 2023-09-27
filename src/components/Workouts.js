@@ -10,8 +10,9 @@ import {
 import ExerciseForm from "./ExerciseForm";
 import SetForm from "./SetForm";
 import Overlay from "./Overlay";
+import WorkoutForm from "./WorkoutForm";
 
-const WorkoutList = () => {
+const Workouts = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
 
@@ -20,6 +21,12 @@ const WorkoutList = () => {
 
   const [exerciseOverlays, setExerciseOverlays] = useState({});
   const [setOverlays, setSetOverlays] = useState({});
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleOverlay = () => {
+    setIsOpen(!isOpen);
+  };
 
   const toggleExerciseOverlay = (exerciseId) => {
     setExerciseOverlays((prevState) => ({
@@ -122,8 +129,14 @@ const WorkoutList = () => {
           </Overlay>
         </div>
       ))}
+      <button className="addWorkout" onClick={toggleOverlay}>
+        <span>+</span>
+      </button>
+      <Overlay isOpen={isOpen} onClose={toggleOverlay}>
+        <WorkoutForm />
+      </Overlay>
     </div>
   ));
 };
 
-export default WorkoutList;
+export default Workouts;

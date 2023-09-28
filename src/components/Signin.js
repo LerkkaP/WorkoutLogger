@@ -1,9 +1,7 @@
-import { NavLink } from "react-router-dom";
-
-const Signup = () => {
+const Signin = () => {
   return (
     <div className="form">
-      <h2>Create An Account</h2>
+      <h2>Sign in</h2>
       <div className="form-body">
         <div className="username">
           <label className="form__label" htmlFor="username">
@@ -27,28 +25,14 @@ const Signup = () => {
             placeholder="Password"
           />
         </div>
-        <div className="confirm-password">
-          <label className="form__label" htmlFor="password2">
-            Confirm Password{" "}
-          </label>
-          <input
-            className="form__input"
-            type="password"
-            name="password2"
-            placeholder="Confirm Password"
-          />
-        </div>
       </div>
-      <div className="register">
+      <div className="signin">
         <button className="btn" type="submit">
-          Create Account
+          Sign in
         </button>
       </div>
-      <span>
-        Already have an account? <NavLink to={"/signin"}>Sign in</NavLink>
-      </span>
     </div>
   );
 };
 
-export default Signup;
+export default Signin;

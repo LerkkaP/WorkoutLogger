@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Signin = () => {
   return (
     <div className="form">
@@ -31,6 +33,9 @@ const Signin = () => {
           Sign in
         </button>
       </div>
+      <span>
+        Don't have an account? <NavLink to={"/signup"}>Create account</NavLink>
+      </span>
     </div>
   );
 };

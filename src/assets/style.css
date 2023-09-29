@@ -115,6 +115,12 @@ body {
   background: none;
 }
 
+#deleteExercise {
+  cursor: pointer;
+  position: relative;
+  color: white;
+}
+
 /* forms/inputs */
 
 .workoutForm input,
@@ -181,7 +187,16 @@ body {
 .form span {
   margin-top: 20px;
 }
+.form span a {
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(46, 157, 209);
+}
 
+.form span a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
 /*  Hamburger  */
 
 #menu {

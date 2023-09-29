@@ -28,6 +28,7 @@ body {
 }
 
 .workout {
+  position: relative;
   border-radius: 20px;
   margin-bottom: 10px;
   width: 50%;
@@ -117,8 +118,31 @@ body {
 
 #deleteExercise {
   cursor: pointer;
-  position: relative;
   color: white;
+}
+
+#menu #deleteWorkout {
+  border-radius: 4px;
+  border: none;
+  color: white;
+  background-color: rgb(158, 65, 65);
+}
+
+#menu #addExercise {
+  border-radius: 4px;
+  border: none;
+  color: black;
+  background-color: white;
+}
+
+.btn {
+  color: white;
+  background: rgb(46, 157, 209);
+  border-radius: 4px;
+  margin-top: 4px;
+  padding: 8px;
+  width: 300px;
+  border: none;
 }
 
 /* forms/inputs */
@@ -174,16 +198,6 @@ body {
   border: none;
 }
 
-.btn {
-  color: white;
-  background: rgb(46, 157, 209);
-  border-radius: 4px;
-  margin-top: 4px;
-  padding: 8px;
-  width: 300px;
-  border: none;
-}
-
 .form span {
   margin-top: 20px;
 }
@@ -200,15 +214,20 @@ body {
 /*  Hamburger  */
 
 #menu {
-  position: relative;
   list-style: none;
   padding: 0;
   position: absolute;
-  background-color: white;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+  top: 35px;
+  left: 350px;
+  z-index: 1;
+  background-color: #5e5757;
 }
 
 #menu li {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

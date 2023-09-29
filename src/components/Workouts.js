@@ -69,10 +69,16 @@ const Workouts = () => {
       {hamburger && activeWorkout === workout.id && (
         <ul id="menu">
           <li>
-            <button onClick={() => handleDeleteWorkout(workout.id)}>
+            <button
+              id="deleteWorkout"
+              onClick={() => handleDeleteWorkout(workout.id)}
+            >
               Delete workout
             </button>{" "}
-            <button onClick={() => toggleExerciseOverlay(workout.id)}>
+            <button
+              id="addExercise"
+              onClick={() => toggleExerciseOverlay(workout.id)}
+            >
               add exercise
             </button>
             <Overlay

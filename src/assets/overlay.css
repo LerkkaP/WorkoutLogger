@@ -31,6 +31,7 @@
 }
 
 .overlay__close:after {
+  color: white;
   display: inline-block;
   content: "\00d7";
 }

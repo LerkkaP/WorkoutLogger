@@ -1,6 +1,19 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+
 const Signin = () => {
+  const dispatch = useDispatch();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    console.log(username);
+    console.log(password);
+  };
+
   return (
     <div className="form">
       <h2>Sign in</h2>
@@ -14,6 +27,8 @@ const Signin = () => {
             type="text"
             name="username"
             placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div className="password">
@@ -25,11 +40,13 @@ const Signin = () => {
             type="password"
             name="password1"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
       </div>
       <div className="signin">
-        <button className="btn" type="submit">
+        <button onClick={handleLogin} className="btn" type="submit">
           Sign in
         </button>
       </div>

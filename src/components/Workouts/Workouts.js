@@ -5,12 +5,12 @@ import {
   removeWorkout,
   removeExercise,
   removeSet,
-} from "../actions/WorkoutActions";
+} from "../../actions/WorkoutActions";
 
-import ExerciseForm from "./ExerciseForm";
-import SetForm from "./SetForm";
-import Overlay from "./Overlay";
-import WorkoutForm from "./WorkoutForm";
+import ExerciseForm from "../ExerciseForm/ExerciseForm";
+import SetForm from "../SetForm/SetForm";
+import Overlay from "../Overlay/Overlay";
+import WorkoutForm from "../WorkoutForm/WorkoutForm";
 
 const Workouts = () => {
   const dispatch = useDispatch();

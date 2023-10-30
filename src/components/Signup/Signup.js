@@ -2,7 +2,8 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { registerUser } from "../actions/AuthActions";
+import { registerUser } from "../../actions/AuthActions";
+import styles from "../../assets/authForms.module.css";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -24,15 +25,15 @@ const Signup = () => {
   };
 
   return (
-    <div className="form">
-      <h2>Create An Account</h2>
-      <div className="form-body">
-        <div className="username">
-          <label className="form__label" htmlFor="username">
+    <div className={styles.form}>
+      <h2 className={styles.title}>Create An Account</h2>
+      <div className={styles.body}>
+        <div>
+          <label className={styles.label} htmlFor="username">
             Username{" "}
           </label>
           <input
-            className="form__input"
+            className={styles.field}
             type="text"
             name="username"
             placeholder="Username"
@@ -40,12 +41,12 @@ const Signup = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="password">
-          <label className="form__label" htmlFor="password1">
+        <div>
+          <label className={styles.label} htmlFor="password1">
             Password{" "}
           </label>
           <input
-            className="form__input"
+            className={styles.field}
             type="password"
             name="password1"
             placeholder="Password"
@@ -53,12 +54,12 @@ const Signup = () => {
             onChange={(e) => setPassword1(e.target.value)}
           />
         </div>
-        <div className="confirm-password">
-          <label className="form__label" htmlFor="password2">
+        <div>
+          <label className={styles.label} htmlFor="password2">
             Confirm Password{" "}
           </label>
           <input
-            className="form__input"
+            className={styles.field}
             type="password"
             name="password2"
             placeholder="Confirm Password"
@@ -67,13 +68,16 @@ const Signup = () => {
           />
         </div>
       </div>
-      <div className="register">
-        <button className="btn" onClick={handleRegister}>
+      <div>
+        <button className={styles.btn} onClick={handleRegister} type="submit">
           Create Account
         </button>
       </div>
-      <span>
-        Already have an account? <NavLink to={"/signin"}>Sign in</NavLink>
+      <span className={styles.span}>
+        Already have an account?{" "}
+        <NavLink className={styles.link} to={"/signin"}>
+          Sign in
+        </NavLink>
       </span>
     </div>
   );

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import "../assets/overlay.css";
+import "../../assets/overlay.css";
 
 const Overlay = ({ isOpen, children, onClose }) => {
   return (

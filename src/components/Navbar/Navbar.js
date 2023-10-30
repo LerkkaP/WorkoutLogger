@@ -1,8 +1,8 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 
-import Signup from "./Signup";
-import Signin from "./Signin";
-import Workouts from "./Workouts";
+import Signup from "../Signup/Signup";
+import Signin from "../Signin/Signin";
+import Workouts from "../Workouts/Workouts";
 
 const Navbar = () => {
   return (

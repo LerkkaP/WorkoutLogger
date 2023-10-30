@@ -1,0 +1,66 @@
+.btn {
+  color: white;
+  background: rgb(46, 157, 209);
+  border-radius: 4px;
+  margin-top: 4px;
+  padding: 8px;
+  width: 300px;
+  border: none;
+}
+
+.btn:hover {
+  background-image: linear-gradient(rgb(0 0 0/15%) 0 0);
+  cursor: pointer;
+}
+
+.field {
+  display: flex;
+  border-radius: 4px;
+  border: solid 1.5px black;
+  color: black;
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: none;
+}
+
+.form {
+  margin: auto;
+  width: 550px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.body {
+  width: 300px;
+  text-align: center;
+}
+
+.label {
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.title {
+  text-align: left;
+}
+
+.span {
+  margin-top: 20px;
+}
+
+.link {
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(46, 157, 209);
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}

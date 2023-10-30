@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { initializeWorkouts } from "./actions/WorkoutActions";
 import { useDispatch } from "react-redux";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 
 import "./assets/style.css";
 

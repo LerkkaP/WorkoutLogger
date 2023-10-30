@@ -185,32 +185,6 @@ body {
   margin-bottom: 10px;
 }
 
-.form__label {
-  display: block;
-  text-align: left;
-}
-
-.form__input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 4px;
-  border-radius: 4px;
-  border: none;
-}
-
-.form span {
-  margin-top: 20px;
-}
-.form span a {
-  font-weight: bold;
-  text-decoration: none;
-  color: rgb(46, 157, 209);
-}
-
-.form span a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.3em;
-}
 /*  Hamburger  */
 
 #menu {

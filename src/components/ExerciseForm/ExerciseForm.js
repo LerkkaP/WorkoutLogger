@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { updateWorkout } from "../actions/WorkoutActions";
+import { updateWorkout } from "../../actions/WorkoutActions";
 
 const ExerciseForm = (id) => {
   const dispatch = useDispatch();

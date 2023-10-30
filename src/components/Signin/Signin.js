@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
+import styles from "../../assets/authForms.module.css";
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -15,15 +16,15 @@ const Signin = () => {
   };
 
   return (
-    <div className="form">
-      <h2>Sign in</h2>
-      <div className="form-body">
-        <div className="username">
-          <label className="form__label" htmlFor="username">
+    <div className={styles.form}>
+      <h2 className={styles.title}>Sign in</h2>
+      <div className={styles.body}>
+        <div>
+          <label className={styles.label} htmlFor="username">
             Username{" "}
           </label>
           <input
-            className="form__input"
+            className={styles.field}
             type="text"
             name="username"
             placeholder="Username"
@@ -32,11 +33,11 @@ const Signin = () => {
           />
         </div>
         <div className="password">
-          <label className="form__label" htmlFor="password1">
+          <label className={styles.label} htmlFor="password1">
             Password{" "}
           </label>
           <input
-            className="form__input"
+            className={styles.field}
             type="password"
             name="password1"
             placeholder="Password"
@@ -45,13 +46,16 @@ const Signin = () => {
           />
         </div>
       </div>
-      <div className="signin">
-        <button onClick={handleLogin} className="btn" type="submit">
+      <div>
+        <button onClick={handleLogin} className={styles.btn} type="submit">
           Sign in
         </button>
       </div>
-      <span>
-        Don't have an account? <NavLink to={"/signup"}>Create account</NavLink>
+      <span className={styles.span}>
+        Don't have an account?{" "}
+        <NavLink className={styles.link} to={"/signup"}>
+          Create account
+        </NavLink>
       </span>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { updateSets } from "../actions/WorkoutActions";
+import { updateSets } from "../../actions/WorkoutActions";
 
 const SetForm = ({ workout_id, exercise_id }) => {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { updateFormData, resetForm } from "../reducers/formReducer";
+import { updateFormData, resetForm } from "../../reducers/formReducer";
 
-import { insertWorkout } from "../actions/WorkoutActions";
+import { insertWorkout } from "../../actions/WorkoutActions";
 
 const dateRegex = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/;
 

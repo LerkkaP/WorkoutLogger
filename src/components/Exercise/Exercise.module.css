@@ -1,0 +1,49 @@
+.exercise {
+  background-color: #1e1e1e;
+  border-radius: 15px;
+  margin-bottom: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding-top: 0.33em;
+  padding-bottom: 0.33em;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+  transition: transform 0.1s ease;
+}
+
+.exercise:hover {
+  transform: scale(1.1);
+}
+
+.btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.reps {
+  margin-right: 10px;
+}
+
+.sets {
+  padding-left: 10px;
+}
+
+.add {
+  border: none;
+  color: black;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}

@@ -1,16 +1,12 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import {
-  removeWorkout,
-  removeExercise,
-  removeSet,
-} from "../../actions/WorkoutActions";
+import { removeWorkout } from "../../actions/WorkoutActions";
 
 import ExerciseForm from "../ExerciseForm/ExerciseForm";
-import SetForm from "../SetForm/SetForm";
 import Overlay from "../Overlay/Overlay";
 import WorkoutForm from "../WorkoutForm/WorkoutForm";
+import Exercise from "../Exercise/Exercise";
 
 import styles from "./Workouts.module.css";
 
@@ -22,8 +18,6 @@ const Workouts = () => {
   const [activeWorkout, setActiveWorkout] = useState(null);
 
   const [exerciseOverlays, setExerciseOverlays] = useState({});
-  const [setOverlays, setSetOverlays] = useState({});
-
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOverlay = () => {
@@ -37,13 +31,6 @@ const Workouts = () => {
     }));
   };
 
-  const toggleSetOverlay = (exerciseId) => {
-    setSetOverlays((prevState) => ({
-      ...prevState,
-      [exerciseId]: !prevState[exerciseId],
-    }));
-  };
-
   const handleToggleMenu = (workoutId) => {
     setActiveWorkout(workoutId);
     setHamburger(!hamburger);
@@ -52,14 +39,6 @@ const Workouts = () => {
     if (window.confirm("Are you sure you want to delete this workout?")) {
       dispatch(removeWorkout(id));
     }
-  };
-
-  const handleDeleteExercise = async (workout_id, exercise_id) => {
-    dispatch(removeExercise(workout_id, exercise_id));
-  };
-
-  const handleDeleteSet = async (set_id, workout_id, exercise_id) => {
-    dispatch(removeSet(set_id, workout_id, exercise_id));
   };
 
   return data.workouts.map((workout, i) => (
@@ -95,56 +74,7 @@ const Workouts = () => {
           </li>
         </ul>
       )}
-      {workout.exercises.map((exercise, i) => (
-        <div key={i} className={styles.exercise}>
-          <p>
-            {exercise.name}{" "}
-            <button
-              className={styles.btn}
-              onClick={() => handleDeleteExercise(workout.id, exercise.id)}
-            >
-              -
-            </button>
-          </p>
-          <div className={styles.container}>
-            <div>
-              {exercise.sets.map((sets, i) => (
-                <p key={i} className={styles.reps}>
-                  {sets.reps}{" "}
-                  <button
-                    onClick={() =>
-                      handleDeleteSet(sets.id, workout.id, exercise.id)
-                    }
-                  >
-                    -
-                  </button>
-                </p>
-              ))}
-            </div>
-            <div>
-              {exercise.sets.map((sets, i) => (
-                <p className={styles.sets} key={i}>
-                  {sets.kg} kg
-                </p>
-              ))}
-            </div>
-          </div>
-          <button
-            className={styles.addExercise}
-            onClick={() => toggleSetOverlay(exercise.id)}
-          >
-            +
-          </button>
-          <Overlay
-            isOpen={setOverlays[exercise.id]}
-            onClose={() => toggleSetOverlay(exercise.id)}
-          >
-            {setOverlays[exercise.id] && (
-              <SetForm workout_id={workout.id} exercise_id={exercise.id} />
-            )}
-          </Overlay>
-        </div>
-      ))}
+      <Exercise exercises={workout.exercises} workoutId={workout.id} />
       <button className={styles.addWorkout} onClick={toggleOverlay}>
         <span className={styles.plus}>+</span>
       </button>

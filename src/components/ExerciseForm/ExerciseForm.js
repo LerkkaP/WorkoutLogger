@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 
 import { updateWorkout } from "../../actions/WorkoutActions";
 
+import styles from "./ExerciseForm.module.css";
+
 const ExerciseForm = (id) => {
   const dispatch = useDispatch();
 
@@ -28,10 +30,11 @@ const ExerciseForm = (id) => {
 
   return (
     <div>
-      <div className="exerciseForm">
+      <div>
         <div>
           Exercise
           <input
+            className={styles.field}
             type="text"
             name="exercise"
             value={exercise}
@@ -41,6 +44,7 @@ const ExerciseForm = (id) => {
         <div>
           Reps
           <input
+            className={styles.field}
             type="number"
             name="reps"
             value={reps}
@@ -50,6 +54,7 @@ const ExerciseForm = (id) => {
         <div>
           Load (kg)
           <input
+            className={styles.field}
             type="number"
             name="load"
             value={load}
@@ -57,7 +62,9 @@ const ExerciseForm = (id) => {
           />
         </div>
         <div>
-          <button onClick={(e) => handleSubmit(id)}>Add</button>
+          <button className={styles.btn} onClick={(e) => handleSubmit(id)}>
+            Add
+          </button>
         </div>
       </div>
     </div>

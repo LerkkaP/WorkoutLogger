@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 
 import { updateSets } from "../../actions/WorkoutActions";
 
+import styles from "./SetForm.module.css";
+
 const SetForm = ({ workout_id, exercise_id }) => {
   const dispatch = useDispatch();
 
@@ -20,10 +22,11 @@ const SetForm = ({ workout_id, exercise_id }) => {
   };
 
   return (
-    <div className="setForm">
+    <div>
       <div>
         Reps
         <input
+          className={styles.field}
           type="number"
           name="reps"
           value={reps}
@@ -33,6 +36,7 @@ const SetForm = ({ workout_id, exercise_id }) => {
       <div>
         Load (kg)
         <input
+          className={styles.field}
           type="number"
           name="load"
           value={load}
@@ -40,7 +44,9 @@ const SetForm = ({ workout_id, exercise_id }) => {
         />
       </div>
       <div>
-        <button onClick={handleSubmit}>Add set</button>
+        <button className={styles.btn} onClick={handleSubmit}>
+          Add set
+        </button>
       </div>
     </div>
   );

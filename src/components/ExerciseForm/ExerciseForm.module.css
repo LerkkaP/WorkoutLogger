@@ -1,0 +1,10 @@
+.field {
+  display: flex;
+  border-radius: 4px;
+  border: solid 1.5px black;
+  color: black;
+}
+
+.btn {
+  margin-top: 1em;
+}

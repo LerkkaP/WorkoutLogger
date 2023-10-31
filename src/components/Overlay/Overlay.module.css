@@ -1,4 +1,4 @@
-.overlay__background {
+.background {
   background-color: rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 100%;
@@ -9,7 +9,7 @@
   z-index: 9;
 }
 
-.overlay__container {
+.container {
   backdrop-filter: blur(5px);
   position: fixed;
   top: 0;
@@ -24,21 +24,21 @@
   border-radius: 20px;
 }
 
-.overlay__controls {
+.controls {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.overlay__close:after {
-  color: white;
-  display: inline-block;
-  content: "\00d7";
-}
-
-.overlay__close {
+.close {
   border: none;
   background-color: transparent;
   font-size: 36px;
   cursor: pointer;
+}
+
+.close:after {
+  color: white;
+  display: inline-block;
+  content: "\00d7";
 }

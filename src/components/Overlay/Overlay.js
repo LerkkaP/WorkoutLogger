@@ -1,17 +1,17 @@
 import { Fragment } from "react";
 
-import "../../assets/overlay.css";
+import styles from "./Overlay.module.css";
 
 const Overlay = ({ isOpen, children, onClose }) => {
   return (
     <Fragment>
       {isOpen && (
-        <div className="overlay">
-          <div className="overlay__background" onClick={onClose} />
-          <div className="overlay__container">
-            <div className="overlay__controls">
+        <div>
+          <div className={styles.background} onClick={onClose} />
+          <div className={styles.container}>
+            <div className={styles.controls}>
               <button
-                className="overlay__close"
+                className={styles.close}
                 type="button"
                 onClick={onClose}
               />

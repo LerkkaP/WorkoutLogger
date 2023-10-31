@@ -12,6 +12,8 @@ import SetForm from "../SetForm/SetForm";
 import Overlay from "../Overlay/Overlay";
 import WorkoutForm from "../WorkoutForm/WorkoutForm";
 
+import styles from "./Workouts.module.css";
+
 const Workouts = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
@@ -61,22 +63,25 @@ const Workouts = () => {
   };
 
   return data.workouts.map((workout, i) => (
-    <div key={i} className="workout">
+    <div key={i} className={styles.workout}>
       <p>{workout.date}</p>
-      <button id="dots" onClick={() => handleToggleMenu(workout.id)}>
+      <button
+        className={styles.dots}
+        onClick={() => handleToggleMenu(workout.id)}
+      >
         &#10247;
       </button>
       {hamburger && activeWorkout === workout.id && (
-        <ul id="menu">
-          <li>
+        <ul className={styles.menu}>
+          <li className={styles.list}>
             <button
-              id="deleteWorkout"
+              className={styles.delete}
               onClick={() => handleDeleteWorkout(workout.id)}
             >
               Delete workout
             </button>{" "}
             <button
-              id="addExercise"
+              className={styles.add}
               onClick={() => toggleExerciseOverlay(workout.id)}
             >
               add exercise
@@ -91,20 +96,20 @@ const Workouts = () => {
         </ul>
       )}
       {workout.exercises.map((exercise, i) => (
-        <div key={i} className="exercise">
+        <div key={i} className={styles.exercise}>
           <p>
             {exercise.name}{" "}
             <button
-              id="deleteExercise"
+              className={styles.btn}
               onClick={() => handleDeleteExercise(workout.id, exercise.id)}
             >
               -
             </button>
           </p>
-          <div className="reps-sets-container">
-            <div className="reps">
+          <div className={styles.container}>
+            <div>
               {exercise.sets.map((sets, i) => (
-                <p key={i}>
+                <p key={i} className={styles.reps}>
                   {sets.reps}{" "}
                   <button
                     onClick={() =>
@@ -116,13 +121,18 @@ const Workouts = () => {
                 </p>
               ))}
             </div>
-            <div className="sets">
+            <div>
               {exercise.sets.map((sets, i) => (
-                <p key={i}>{sets.kg} kg</p>
+                <p className={styles.sets} key={i}>
+                  {sets.kg} kg
+                </p>
               ))}
             </div>
           </div>
-          <button className="add" onClick={() => toggleSetOverlay(exercise.id)}>
+          <button
+            className={styles.addExercise}
+            onClick={() => toggleSetOverlay(exercise.id)}
+          >
             +
           </button>
           <Overlay
@@ -135,8 +145,8 @@ const Workouts = () => {
           </Overlay>
         </div>
       ))}
-      <button className="addWorkout" onClick={toggleOverlay}>
-        <span>+</span>
+      <button className={styles.addWorkout} onClick={toggleOverlay}>
+        <span className={styles.plus}>+</span>
       </button>
       <Overlay isOpen={isOpen} onClose={toggleOverlay}>
         <WorkoutForm />

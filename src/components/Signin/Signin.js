@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import styles from "../../assets/authForms.module.css";
+import { loginUser } from "../../actions/AuthActions";
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -11,8 +12,13 @@ const Signin = () => {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    console.log(username);
-    console.log(password);
+    const userData = {
+      username,
+      password,
+    };
+    dispatch(loginUser(userData));
+    setUsername("");
+    setPassword("");
   };
 
   return (

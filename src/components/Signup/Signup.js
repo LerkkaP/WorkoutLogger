@@ -1,31 +1,27 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message"
 
-import { registerUser } from "../../actions/AuthActions";
+import { registerUser, reset } from "../../actions/AuthActions";
 import styles from "../../assets/authForms.module.css";
 
 const Signup = () => {
   const dispatch = useDispatch();
+  const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
 
-  const [username, setUsername] = useState("");
-  const [password1, setPassword1] = useState("");
-  const [password2, setPassword2] = useState("");
-
-  const handleRegister = () => {
+  const onSubmit = data => {
     const userData = {
-      username: username,
-      password1: password1,
-      password2: password2,
-    };
-    dispatch(registerUser(userData));
-    setUsername("");
-    setPassword1("");
-    setPassword2("");
-  };
-
+      username: data.username,
+      password1: data.password1,
+      password2: data.password2
+    }
+    dispatch(registerUser(userData))
+    reset()
+  }
+ 
   return (
-    <div className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <h2 className={styles.title}>Create An Account</h2>
       <div className={styles.body}>
         <div>
@@ -35,10 +31,7 @@ const Signup = () => {
           <input
             className={styles.field}
             type="text"
-            name="username"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            placeholder="username" {...register("username", { required: true })}
           />
         </div>
         <div>
@@ -47,11 +40,8 @@ const Signup = () => {
           </label>
           <input
             className={styles.field}
+            placeholder="password" {...register("password1", { required: true })}
             type="password"
-            name="password1"
-            placeholder="Password"
-            value={password1}
-            onChange={(e) => setPassword1(e.target.value)}
           />
         </div>
         <div>
@@ -61,15 +51,28 @@ const Signup = () => {
           <input
             className={styles.field}
             type="password"
-            name="password2"
-            placeholder="Confirm Password"
-            value={password2}
-            onChange={(e) => setPassword2(e.target.value)}
+            placeholder="confirm password"
+            {...register("password2", {
+              required: true,
+              validate: (val) => {
+                if (watch('password1') != val) {
+                  return "Passwords didn't match"
+                  console.log("Passwords didn't match")
+                }
+              },
+             })}
+          />
+          <ErrorMessage errors={errors} name="password2" />
+
+          <ErrorMessage
+            errors={errors}
+            name="password1"
+            render={({ message }) => <p>{message}</p>}
           />
         </div>
       </div>
       <div>
-        <button className={styles.btn} onClick={handleRegister} type="submit">
+        <button className={styles.btn} type="submit">
           Create Account
         </button>
       </div>
@@ -79,7 +82,7 @@ const Signup = () => {
           Sign in
         </NavLink>
       </span>
-    </div>
+    </form>
   );
 };
 

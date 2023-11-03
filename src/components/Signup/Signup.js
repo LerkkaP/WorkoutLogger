@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import { registerUser, reset } from "../../actions/AuthActions";
+import { registerUser } from "../../actions/AuthActions";
 import styles from "../../assets/authForms.module.css";
 import { Button, TextField } from "@mui/material";
 
@@ -32,31 +32,27 @@ const Signup = () => {
         <div style={{ marginBottom: "16px" }}>
           <TextField
             fullWidth
-            label="Username"
-            placeholder="username"
+            label="username"
             {...register("username", { required: "Username is required" })}
             error={!!errors.username}
             helperText={errors.username && errors.username.message}
-            sx={{ input: { color: 'white' } }}
           />
         </div>
         <div style={{ marginBottom: "16px" }}>
           <TextField
             fullWidth
-            label={"Password"}
-            placeholder="password"
+            label="password"
             type="password"
             {...register("password1", { required: "Password is required" })}
             error={!!errors.password1}
             helperText={errors.password1 && errors.password1.message}
-            sx={{ input: { color: 'white' } }}
-          />
+        />
         </div>
-        <div>
+        <div style={{ marginBottom: "16px" }}>
           <TextField
             fullWidth
             type="password"
-            placeholder="confirm password"
+            label="confirm password"
             {...register("password2", {
               required: "Password confirmation is required",
               validate: (val) => {
@@ -67,7 +63,6 @@ const Signup = () => {
             })}
             error={!!errors.password2}
             helperText={errors.password2 && errors.password2.message}
-            sx={{ input: { color: 'white' } }}
           />
         </div>
       </div>

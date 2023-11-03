@@ -1,17 +1,8 @@
 .btn {
-  color: white;
-  background: rgb(46, 157, 209);
-  border-radius: 4px;
-  margin-top: 4px;
-  padding: 8px;
   width: 300px;
-  border: none;
+  
 }
 
-.btn:hover {
-  background-image: linear-gradient(rgb(0 0 0/15%) 0 0);
-  cursor: pointer;
-}
 
 .field {
   display: flex;

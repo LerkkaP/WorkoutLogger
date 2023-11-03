@@ -1,61 +1,60 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
 import { useDispatch } from "react-redux";
 import styles from "../../assets/authForms.module.css";
 import { loginUser } from "../../actions/AuthActions";
+import { useForm } from "react-hook-form";
+import { Button, TextField } from "@mui/material";
+
 
 const Signin = () => {
   const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+    reset,
+  } = useForm();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleLogin = () => {
+  const onSubmit = (data) => {
     const userData = {
-      username,
-      password,
+      username: data.username,
+      password: data.password,
     };
-    dispatch(loginUser(userData));
-    setUsername("");
-    setPassword("");
+    console.log(userData)
+    //dispatch(loginUser(userData));
+    reset();
   };
 
   return (
-    <div className={styles.form}>
-      <h2 className={styles.title}>Sign in</h2>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <h2>Sign in</h2>
       <div className={styles.body}>
-        <div>
-          <label className={styles.label} htmlFor="username">
-            Username{" "}
-          </label>
-          <input
-            className={styles.field}
+        <div style={{ marginBottom: "16px" }}>
+          <TextField
+            fullWidth
+            label="username"
             type="text"
-            name="username"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            {...register("username", { required: "Username is required" })}
+            error={!!errors.username}
+            helperText={errors.username && errors.username.message}
           />
         </div>
-        <div className="password">
-          <label className={styles.label} htmlFor="password1">
-            Password{" "}
-          </label>
-          <input
-            className={styles.field}
+        <div style={{ marginBottom: "16px" }}>
+          <TextField
+            fullWidth
+            label="password"
             type="password"
-            name="password1"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+            {...register("password", { required: "Password is is required" })}
+            error={!!errors.password}
+            helperText={errors.password && errors.password.message}
+            />
         </div>
       </div>
       <div>
-        <button onClick={handleLogin} className={styles.btn} type="submit">
+        <Button className={styles.btn} type="submit" variant="contained" color="primary">
           Sign in
-        </button>
+        </Button>
       </div>
       <span className={styles.span}>
         Don't have an account?{" "}
@@ -63,7 +62,7 @@ const Signin = () => {
           Create account
         </NavLink>
       </span>
-    </div>
+    </form>
   );
 };
 

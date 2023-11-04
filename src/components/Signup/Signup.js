@@ -5,6 +5,8 @@ import { registerUser } from "../../actions/AuthActions";
 import styles from "../../assets/authForms.module.css";
 import { Button, TextField } from "@mui/material";
 
+import { validPassword } from "../../utils/Regex";
+
 const Signup = () => {
   const dispatch = useDispatch();
   const notification = useSelector((state) => state.auth.message);
@@ -47,7 +49,14 @@ const Signup = () => {
             fullWidth
             label="password"
             type="password"
-            {...register("password1", { required: "Password is required" })}
+            {...register("password1", {
+              required: "Password is required",
+              validate: (val) => {
+                if (!validPassword.test(val)) {
+                  return "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit and one special character.";
+                }
+              },
+            })}
             error={!!errors.password1}
             helperText={errors.password1 && errors.password1.message}
           />

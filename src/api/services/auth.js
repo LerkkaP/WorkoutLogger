@@ -3,8 +3,12 @@ import axios from "axios";
 const baseUrl = "http://localhost:3001/auth";
 
 const register = async (userData) => {
-  await axios.post(`${baseUrl}/signup`, userData);
-  console.log(baseUrl);
+  try {
+    const response = await axios.post(`${baseUrl}/signup`, userData);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
 };
 
 const login = async (userData) => {

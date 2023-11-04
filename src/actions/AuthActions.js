@@ -4,8 +4,8 @@ import { authSlice } from "../reducers/authReducer";
 
 export const registerUser = (user) => {
   return async (dispatch) => {
-    await authService.register(user);
-    dispatch(reset);
+    const response = await authService.register(user);
+    dispatch(message(response));
   };
 };
 
@@ -24,4 +24,4 @@ export const logoutUser = (user) => {
   };
 };*/
 
-export const { reset } = authSlice.actions;
+export const { reset, message } = authSlice.actions;

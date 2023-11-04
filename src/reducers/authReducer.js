@@ -18,15 +18,8 @@ export const authSlice = createSlice({
       state.isSuccess = false;
       state.message = "";
     },
-    success: (state, action) => {
-      state.isSuccess = true;
-      state.isError = false;
-      state.message = action.payload;
-    },
-    error: (state, action) => {
-      state.isError = true;
-      state.isSuccess = false;
-      state.message = action.payload;
+    message: (state, action) => {
+      state.message = action.payload.message;
     },
   },
 });

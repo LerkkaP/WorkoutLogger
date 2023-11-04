@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { registerUser } from "../../actions/AuthActions";
 import styles from "../../assets/authForms.module.css";
@@ -7,6 +7,8 @@ import { Button, TextField } from "@mui/material";
 
 const Signup = () => {
   const dispatch = useDispatch();
+  const notification = useSelector((state) => state.auth.message);
+
   const {
     register,
     handleSubmit,
@@ -34,8 +36,10 @@ const Signup = () => {
             fullWidth
             label="username"
             {...register("username", { required: "Username is required" })}
-            error={!!errors.username}
-            helperText={errors.username && errors.username.message}
+            error={!!errors.username || !!notification}
+            helperText={
+              (errors.username && errors.username.message) || notification || ""
+            }
           />
         </div>
         <div style={{ marginBottom: "16px" }}>
@@ -46,7 +50,7 @@ const Signup = () => {
             {...register("password1", { required: "Password is required" })}
             error={!!errors.password1}
             helperText={errors.password1 && errors.password1.message}
-        />
+          />
         </div>
         <div style={{ marginBottom: "16px" }}>
           <TextField
@@ -67,7 +71,12 @@ const Signup = () => {
         </div>
       </div>
       <div>
-        <Button className={styles.btn} type="submit" variant="contained" color="primary">
+        <Button
+          className={styles.btn}
+          type="submit"
+          variant="contained"
+          color="primary"
+        >
           Create Account
         </Button>
       </div>

@@ -14,16 +14,15 @@ const register = async (userData) => {
 const login = async (userData) => {
   const response = await axios.post(`${baseUrl}/signin`, userData);
 
-  /*if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data));
+  if (response.data) {
+    localStorage.setItem("user", JSON.stringify(response.data.username));
   }
 
-  return response.data;*/
+  return response.data;
 };
 
-/*
 const logout = () => {
   localStorage.remove("user");
-};*/
+};
 
-export default { register, login };
+export default { register, login, logout };

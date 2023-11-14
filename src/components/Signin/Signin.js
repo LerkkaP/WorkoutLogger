@@ -5,7 +5,6 @@ import { loginUser } from "../../actions/AuthActions";
 import { useForm } from "react-hook-form";
 import { Button, TextField } from "@mui/material";
 
-
 const Signin = () => {
   const dispatch = useDispatch();
   const {
@@ -21,8 +20,8 @@ const Signin = () => {
       username: data.username,
       password: data.password,
     };
-    console.log(userData)
-    //dispatch(loginUser(userData));
+
+    dispatch(loginUser(userData));
     reset();
   };
 
@@ -48,11 +47,16 @@ const Signin = () => {
             {...register("password", { required: "Password is is required" })}
             error={!!errors.password}
             helperText={errors.password && errors.password.message}
-            />
+          />
         </div>
       </div>
       <div>
-        <Button className={styles.btn} type="submit" variant="contained" color="primary">
+        <Button
+          className={styles.btn}
+          type="submit"
+          variant="contained"
+          color="primary"
+        >
           Sign in
         </Button>
       </div>
